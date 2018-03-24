@@ -8,7 +8,7 @@ namespace QuanLyBanBanh
 {
     static class Program
     {
-        //ato2
+        //ato3
         [STAThread]
         static void Main()
         {
