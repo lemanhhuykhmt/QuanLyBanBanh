@@ -8,9 +8,7 @@ namespace QuanLyBanBanh
 {
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
+        //ato
         [STAThread]
         static void Main()
         {
