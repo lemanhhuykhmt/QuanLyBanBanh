@@ -42,7 +42,7 @@ namespace QuanLyBanBanh.GUI.UC
             lvDanhSach.Columns.Add(colSDT);
             lvDanhSach.Columns.Add(colButtonSua);
             lvDanhSach.Columns.Add(colButtonXoa);
-            DataTable dt = KhachHangControl.layDanhSachKH();
+            DataTable dt = KhachHangControl.layDanhSach();
             ListViewButtonColumn btnSua = new ListViewButtonColumn(4);
             btnSua.Click += OnButtonActionClick;
             btnSua.FixedWidth = true;
@@ -84,7 +84,7 @@ namespace QuanLyBanBanh.GUI.UC
         private void OnButtonActionClick1(object sender, ListViewColumnMouseEventArgs e)
         {
             int id = Convert.ToInt32(e.SubItem.Tag);
-            int ketQua = KhachHangControl.xoaThongTinKH(id);
+            int ketQua = KhachHangControl.xoaThongTin(id);
             if(ketQua <= 0)
             {
                 MessageBox.Show("Thực hiện thất bại");
@@ -106,7 +106,7 @@ namespace QuanLyBanBanh.GUI.UC
             int ketQua = 0;
             for (int i = 0; i < lvDanhSach.CheckedIndices.Count; ++i)
             {
-                ketQua += KhachHangControl.xoaThongTinKH(Convert.ToInt32(lvDanhSach.Items[lvDanhSach.CheckedIndices[i]].Text));
+                ketQua += KhachHangControl.xoaThongTin(Convert.ToInt32(lvDanhSach.Items[lvDanhSach.CheckedIndices[i]].Text));
             }
             if (ketQua > 0)
             {
@@ -140,7 +140,7 @@ namespace QuanLyBanBanh.GUI.UC
             lvDanhSach.Columns.Add(colSDT);
             lvDanhSach.Columns.Add(colButtonSua);
             lvDanhSach.Columns.Add(colButtonXoa);
-            DataTable dt = KhachHangControl.timKH(value);
+            DataTable dt = KhachHangControl.timKiem(value);
             ListViewButtonColumn btnSua = new ListViewButtonColumn(4);
             btnSua.Click += OnButtonActionClick;
             btnSua.FixedWidth = true;

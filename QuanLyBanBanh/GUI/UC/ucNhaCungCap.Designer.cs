@@ -28,23 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.ckbTatCa = new System.Windows.Forms.CheckBox();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
             this.lvDanhSach = new System.Windows.Forms.ListView();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnNhap = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // ckbTatCa
-            // 
-            this.ckbTatCa.AutoSize = true;
-            this.ckbTatCa.Location = new System.Drawing.Point(7, 75);
-            this.ckbTatCa.Name = "ckbTatCa";
-            this.ckbTatCa.Size = new System.Drawing.Size(102, 21);
-            this.ckbTatCa.TabIndex = 13;
-            this.ckbTatCa.Text = "Chọn tất cả";
-            this.ckbTatCa.UseVisualStyleBackColor = true;
             // 
             // btnTimKiem
             // 
@@ -54,6 +43,7 @@
             this.btnTimKiem.TabIndex = 12;
             this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // txtTimKiem
             // 
@@ -85,6 +75,7 @@
             this.btnXoa.TabIndex = 8;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnNhap
             // 
@@ -100,7 +91,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.ckbTatCa);
             this.Controls.Add(this.btnTimKiem);
             this.Controls.Add(this.txtTimKiem);
             this.Controls.Add(this.lvDanhSach);
@@ -114,8 +104,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox ckbTatCa;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.ListView lvDanhSach;

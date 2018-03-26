@@ -93,6 +93,12 @@
     <Compile Include="GUI\Sua\frmSuaKH.Designer.cs">
       <DependentUpon>frmSuaKH.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\Sua\frmSuaNCC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Sua\frmSuaNCC.Designer.cs">
+      <DependentUpon>frmSuaNCC.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UC\ucBanHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Sua\frmSuaKH.resx">
       <DependentUpon>frmSuaKH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Sua\frmSuaNCC.resx">
+      <DependentUpon>frmSuaNCC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UC\ucBanHang.resx">
       <DependentUpon>ucBanHang.cs</DependentUpon>

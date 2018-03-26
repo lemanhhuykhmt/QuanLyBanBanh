@@ -11,21 +11,21 @@ using System.Windows.Forms;
 
 namespace QuanLyBanBanh.GUI.Sua
 {
-    public partial class frmSuaKH : Form
+    public partial class frmSuaNCC : Form
     {
         private int idKH;
-        public frmSuaKH()
+        public frmSuaNCC()
         {
             InitializeComponent();
         }
-        public frmSuaKH(int id)
+        public frmSuaNCC(int id)
         {
             InitializeComponent();
             idKH = id;
-            DataTable dt = KhachHangControl.layThongTin(id);
+            DataTable dt = NhaCungCapControl.layThongTin(id);
             txtTenCu.Text = dt.Rows[0][1].ToString();
-            txtDiaChiCu.Text = dt.Rows[0][2].ToString();
-            txtSDTCu.Text = dt.Rows[0][3].ToString();
+            txtDiaChiCu.Text = dt.Rows[0][3].ToString();
+            txtSDTCu.Text = dt.Rows[0][2].ToString();
         }
 
         private void btnXacNhan_Click(object sender, EventArgs e)
@@ -33,10 +33,10 @@ namespace QuanLyBanBanh.GUI.Sua
             string ten = txtTenMoi.Text;
             string diachi = txtDiaChiMoi.Text;
             string sdt = txtSDTMoi.Text;
-            if(kiemTra(ten, diachi, sdt))
+            if (kiemTra(ten, diachi, sdt))
             {
                 int ketQua = 0;
-                ketQua = KhachHangControl.suaThongTin(idKH , ten, diachi, sdt);
+                ketQua = NhaCungCapControl.suaThongTin(idKH, ten, diachi, sdt);
                 if (ketQua > 0)
                 {
                     MessageBox.Show("thay đổi thành công");
@@ -48,7 +48,6 @@ namespace QuanLyBanBanh.GUI.Sua
         {
             return true;
         }
-
         private void btnDong_Click(object sender, EventArgs e)
         {
             this.Close();
