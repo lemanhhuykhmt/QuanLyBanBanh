@@ -15,6 +15,7 @@ namespace QuanLyBanBanh
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmDangNhap());
+            //ato5
         }
     }
 }
