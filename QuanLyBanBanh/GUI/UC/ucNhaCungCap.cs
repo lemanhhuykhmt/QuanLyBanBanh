@@ -20,6 +20,7 @@ namespace QuanLyBanBanh.GUI.UC
         public ucNhaCungCap()
         {
             InitializeComponent();
+            extender = new ListViewExtender(lvDanhSach); // nâng cấp listview thành listviewextender- code trên mạng
             loadDuLieu();
         }
         private void loadDuLieu()
@@ -39,7 +40,7 @@ namespace QuanLyBanBanh.GUI.UC
             lvDanhSach.Columns.Add(colButtonXoa);
             string query = "select * from NhaPhanPhoi";
             DataTable dt = DataProvider.Instance.ExecuteQuery(query); // trả về kết quả
-            extender = new ListViewExtender(lvDanhSach); // nâng cấp listview thành listviewextender- code trên mạng
+            
             ListViewButtonColumn buttonAction = new ListViewButtonColumn(4);// tạo button ở cột 4
             buttonAction.Click += OnButtonActionClick; // thêm sự kiện cho nó
             buttonAction.FixedWidth = true;
