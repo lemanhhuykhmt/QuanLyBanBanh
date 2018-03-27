@@ -8,14 +8,14 @@ namespace QuanLyBanBanh
 {
     static class Program
     {
-        //ato3
+        //ato0
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new frmDangNhap());
-            //ato5
+            
         }
     }
 }
