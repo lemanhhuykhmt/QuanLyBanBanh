@@ -13,7 +13,7 @@ namespace QuanLyBanBanh
         static void Main()
         {
             Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            Application.SetCompatibleTextRenderingDefault(false);// taolahuy
             Application.Run(new frmDangNhap());
         }
     }
