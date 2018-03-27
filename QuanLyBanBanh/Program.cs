@@ -8,13 +8,15 @@ namespace QuanLyBanBanh
 {
     static class Program
     {
-        //branch huy
+
+
         [STAThread]
         static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);// taolahuy
             Application.Run(new frmDangNhap());
+
         }
     }
 }
