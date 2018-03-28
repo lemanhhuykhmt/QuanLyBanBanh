@@ -14,7 +14,7 @@ namespace QuanLyBanBanh
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmDangNhap()); // branch thien
+            Application.Run(new frmDangNhap()); // branch thien 28
         }
     }
 }
