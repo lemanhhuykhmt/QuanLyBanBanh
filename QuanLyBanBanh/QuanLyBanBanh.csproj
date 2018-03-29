@@ -51,6 +51,7 @@
     <Compile Include="Controls\KhachHangControl.cs" />
     <Compile Include="Controls\NhaCungCapControl.cs" />
     <Compile Include="Controls\NhanVienControl.cs" />
+    <Compile Include="Controls\SanPhamControl.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,11 +82,23 @@
     <Compile Include="GUI\NhapLieu\frmThemKhachHang.Designer.cs">
       <DependentUpon>frmThemKhachHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\NhapLieu\frmThemNCC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhapLieu\frmThemNCC.Designer.cs">
+      <DependentUpon>frmThemNCC.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\NhapLieu\frmThemNV.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUI\NhapLieu\frmThemNV.Designer.cs">
       <DependentUpon>frmThemNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhapLieu\frmThemSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhapLieu\frmThemSP.Designer.cs">
+      <DependentUpon>frmThemSP.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Sua\frmSuaKH.cs">
       <SubType>Form</SubType>
@@ -98,6 +111,12 @@
     </Compile>
     <Compile Include="GUI\Sua\frmSuaNCC.Designer.cs">
       <DependentUpon>frmSuaNCC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Sua\frmSuaSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Sua\frmSuaSP.Designer.cs">
+      <DependentUpon>frmSuaSP.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\UC\ucBanHang.cs">
       <SubType>UserControl</SubType>
@@ -123,6 +142,12 @@
     <Compile Include="GUI\UC\ucNhanVien.Designer.cs">
       <DependentUpon>ucNhanVien.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UC\ucSanPham.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UC\ucSanPham.Designer.cs">
+      <DependentUpon>ucSanPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UC\ucTaiKhoan.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -147,6 +172,9 @@
     <EmbeddedResource Include="GUI\NhapLieu\frmThemKhachHang.resx">
       <DependentUpon>frmThemKhachHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhapLieu\frmThemNCC.resx">
+      <DependentUpon>frmThemNCC.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhapLieu\frmThemNV.resx">
       <DependentUpon>frmThemNV.cs</DependentUpon>
     </EmbeddedResource>
@@ -167,6 +195,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UC\ucNhanVien.resx">
       <DependentUpon>ucNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UC\ucSanPham.resx">
+      <DependentUpon>ucSanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UC\ucTaiKhoan.resx">
       <DependentUpon>ucTaiKhoan.cs</DependentUpon>

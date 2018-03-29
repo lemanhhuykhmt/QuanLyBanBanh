@@ -39,11 +39,11 @@
             this.lbTatCa = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnSua = new System.Windows.Forms.Button();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnThem = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnSua = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -61,16 +61,22 @@
             // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(194, 16);
+            this.dateTimePicker1.CalendarFont = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker1.CalendarMonthBackground = System.Drawing.SystemColors.Highlight;
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyy";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(194, 3);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(74, 22);
+            this.dateTimePicker1.Size = new System.Drawing.Size(150, 22);
             this.dateTimePicker1.TabIndex = 1;
             // 
             // dateTimePicker2
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(275, 15);
+            this.dateTimePicker2.CustomFormat = "dd/MM/yyy";
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker2.Location = new System.Drawing.Point(193, 27);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(85, 22);
+            this.dateTimePicker2.Size = new System.Drawing.Size(241, 22);
             this.dateTimePicker2.TabIndex = 2;
             // 
             // panel1
@@ -80,7 +86,7 @@
             this.panel1.Controls.Add(this.dateTimePicker1);
             this.panel1.Location = new System.Drawing.Point(15, 13);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(381, 53);
+            this.panel1.Size = new System.Drawing.Size(589, 53);
             this.panel1.TabIndex = 3;
             // 
             // panel2
@@ -149,6 +155,33 @@
             this.panel3.Size = new System.Drawing.Size(326, 52);
             this.panel3.TabIndex = 5;
             // 
+            // btnSua
+            // 
+            this.btnSua.Location = new System.Drawing.Point(101, 0);
+            this.btnSua.Name = "btnSua";
+            this.btnSua.Size = new System.Drawing.Size(92, 49);
+            this.btnSua.TabIndex = 0;
+            this.btnSua.Text = "Sửa";
+            this.btnSua.UseVisualStyleBackColor = true;
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(199, 3);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(92, 49);
+            this.btnXoa.TabIndex = 0;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            // 
+            // btnThem
+            // 
+            this.btnThem.Location = new System.Drawing.Point(3, 0);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(92, 49);
+            this.btnThem.TabIndex = 0;
+            this.btnThem.Text = "Thêm";
+            this.btnThem.UseVisualStyleBackColor = true;
+            // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -167,33 +200,6 @@
             this.dgvDanhSach.RowTemplate.Height = 24;
             this.dgvDanhSach.Size = new System.Drawing.Size(736, 635);
             this.dgvDanhSach.TabIndex = 0;
-            // 
-            // btnThem
-            // 
-            this.btnThem.Location = new System.Drawing.Point(3, 0);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(92, 49);
-            this.btnThem.TabIndex = 0;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(199, 3);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(92, 49);
-            this.btnXoa.TabIndex = 0;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            // 
-            // btnSua
-            // 
-            this.btnSua.Location = new System.Drawing.Point(101, 0);
-            this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(92, 49);
-            this.btnSua.TabIndex = 0;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.UseVisualStyleBackColor = true;
             // 
             // ucBanHang
             // 

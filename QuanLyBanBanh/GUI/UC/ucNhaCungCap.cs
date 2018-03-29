@@ -38,8 +38,7 @@ namespace QuanLyBanBanh.GUI.UC
             lvDanhSach.Columns.Add(colDiaChi);            
             lvDanhSach.Columns.Add(colButtonSua);
             lvDanhSach.Columns.Add(colButtonXoa);
-            string query = "select * from NhaPhanPhoi";
-            DataTable dt = DataProvider.Instance.ExecuteQuery(query); // trả về kết quả
+            DataTable dt = NhaCungCapControl.layDanhSach(); // trả về kết quả
             
             ListViewButtonColumn buttonAction = new ListViewButtonColumn(4);// tạo button ở cột 4
             buttonAction.Click += OnButtonActionClick; // thêm sự kiện cho nó
@@ -86,7 +85,7 @@ namespace QuanLyBanBanh.GUI.UC
         private void OnButtonActionClick1(object sender, ListViewColumnMouseEventArgs e)
         {
             int id = Convert.ToInt32(e.SubItem.Tag);
-            int ketQua = KhachHangControl.xoaThongTin(id);
+            int ketQua = NhaCungCapControl.xoaThongTin(id);
             if (ketQua <= 0)
             {
                 MessageBox.Show("Thực hiện thất bại");
@@ -98,7 +97,7 @@ namespace QuanLyBanBanh.GUI.UC
         }
         private void btnNhap_Click(object sender, EventArgs e)
         {
-            frmThemKhachHang f = new frmThemKhachHang();
+            frmThemNCC f = new frmThemNCC();
             f.ShowDialog();
             loadDuLieu();
         }
@@ -109,7 +108,7 @@ namespace QuanLyBanBanh.GUI.UC
             int ketQua = 0;
             for (int i = 0; i < lvDanhSach.CheckedIndices.Count; ++i)
             {
-                ketQua += KhachHangControl.xoaThongTin(Convert.ToInt32(lvDanhSach.Items[lvDanhSach.CheckedIndices[i]].Text));
+                ketQua += NhaCungCapControl.xoaThongTin(Convert.ToInt32(lvDanhSach.Items[lvDanhSach.CheckedIndices[i]].Text));
             }
             if (ketQua > 0)
             {
@@ -131,45 +130,50 @@ namespace QuanLyBanBanh.GUI.UC
                 loadDuLieu();
                 return;
             }
-            lvDanhSach.Clear();
-            ColumnHeader colMaKH = new ColumnHeader() { Text = "Mã" };
-            ColumnHeader colTenKH = new ColumnHeader() { Text = "Tên Khách Hàng" };
-            ColumnHeader colDiaChi = new ColumnHeader() { Text = "Địa Chỉ" };
+            lvDanhSach.Clear();// xóa mọi thứ trong listview
+            ColumnHeader colMaKH = new ColumnHeader() { Text = "Mã" }; // tạo cột mã
+            ColumnHeader colTenKH = new ColumnHeader() { Text = "Tên Nhà Phân Phối" };
             ColumnHeader colSDT = new ColumnHeader() { Text = "Số Điện Thoại" };
+            ColumnHeader colDiaChi = new ColumnHeader() { Text = "Địa Chỉ" };
             ColumnHeader colButtonSua = new ColumnHeader() { Text = "Sửa" };
             ColumnHeader colButtonXoa = new ColumnHeader() { Text = "Xóa" };
-            lvDanhSach.Columns.Add(colMaKH);
+            lvDanhSach.Columns.Add(colMaKH); // thêm cột mã vào list view
             lvDanhSach.Columns.Add(colTenKH);
-            lvDanhSach.Columns.Add(colDiaChi);
             lvDanhSach.Columns.Add(colSDT);
+            lvDanhSach.Columns.Add(colDiaChi);
             lvDanhSach.Columns.Add(colButtonSua);
             lvDanhSach.Columns.Add(colButtonXoa);
-            DataTable dt = KhachHangControl.timKiem(value);
-            ListViewButtonColumn btnSua = new ListViewButtonColumn(4);
-            btnSua.Click += OnButtonActionClick;
-            btnSua.FixedWidth = true;
-            extender.AddColumn(btnSua);
-            ListViewButtonColumn btnXoa = new ListViewButtonColumn(5);
-            btnXoa.Click += OnButtonActionClick1;
-            btnXoa.FixedWidth = true;
-            extender.AddColumn(btnXoa);
-            for (int i = 0; i < dt.Rows.Count; i++)
+            DataTable dt = NhaCungCapControl.timKiem(value);
+
+            ListViewButtonColumn buttonAction = new ListViewButtonColumn(4);// tạo button ở cột 4
+            buttonAction.Click += OnButtonActionClick; // thêm sự kiện cho nó
+            buttonAction.FixedWidth = true;
+            extender.AddColumn(buttonAction);
+            ListViewButtonColumn buttonAction1 = new ListViewButtonColumn(5);
+            buttonAction1.Click += OnButtonActionClick1;
+            buttonAction1.FixedWidth = true;
+            extender.AddColumn(buttonAction1);
+            for (int i = 0; i < dt.Rows.Count; i++) // với mỗi hàng 
             {
-                ListViewItem item = new ListViewItem(dt.Rows[i][0].ToString());
-                ListViewItem.ListViewSubItem subitem = new ListViewItem.ListViewSubItem(item, dt.Rows[i][0].ToString());
+                ListViewItem item = new ListViewItem(dt.Rows[i][0].ToString()); // tạo 1 hàng, giá trị ô đầu là ...
+                //ListViewItem.ListViewSubItem subitem = new ListViewItem.ListViewSubItem(item, dt.Rows[i][0].ToString());
                 //ListViewItem status = new ListViewItem(dt.Rows[i][2].ToString());
 
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = dt.Rows[i][1].ToString() });
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = dt.Rows[i][2].ToString() });
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = dt.Rows[i][3].ToString() });
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = "sửa", Tag = dt.Rows[i][0].ToString() });
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = "xoá", Tag = dt.Rows[i][0].ToString() });
-                lvDanhSach.Items.Add(item);
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = dt.Rows[i][1].ToString() });// giá trị cột 2
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = dt.Rows[i][2].ToString() }); //3
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = dt.Rows[i][3].ToString() }); //4
+                // item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = dt.Rows[i][3].ToString() });
+                //ListViewItem.ListViewSubItem subitem = new ListViewItem.ListViewSubItem();
+                //ListViewExtender
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = "sửa", Tag = dt.Rows[i][0].ToString() }); // 5
+                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = "xóa", Tag = dt.Rows[i][0].ToString() }); //6
+                lvDanhSach.Items.Add(item);// thêm hàng vào list view
 
             }
-            colMaKH.Width = 60;
-            colTenKH.Width = 200;
-            colDiaChi.Width = 370;
+            //dgv.DataSource = DataProvider.Instance.ExecuteQuery(query);
+            colMaKH.Width = 55; // cài đặt kích thước cho 1 cột
+            colTenKH.Width = 250;
+            colDiaChi.Width = 330;
             colSDT.Width = 150;
             colButtonSua.Width = 40;
             colButtonXoa.Width = 40;

@@ -19,6 +19,11 @@ namespace QuanLyBanBanh.Controls
         {
 
         }
+        public static int themDuLieu(string ten, string diachi, string sdt)
+        {
+            string query = "exec themkh @ten , @diachi , @sdt";
+            return DataProvider.Instance.ExecuteNonQuery(query, new String[] { ten, diachi, sdt });
+        }
         public static DataTable layDanhSach() // lấy thông tin khách hàng có id là ..
         {
             string query = "select * from KhachHang";//lấy ra thông tin khách hàng có mã

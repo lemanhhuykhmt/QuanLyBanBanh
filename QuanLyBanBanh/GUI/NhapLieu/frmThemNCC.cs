@@ -11,22 +11,21 @@ using System.Windows.Forms;
 
 namespace QuanLyBanBanh.GUI.NhapLieu
 {
-    public partial class frmThemKhachHang : Form
+    public partial class frmThemNCC : Form
     {
-        public frmThemKhachHang()
+        public frmThemNCC()
         {
             InitializeComponent();
         }
-
         private void btnLuu_Click(object sender, EventArgs e)
         {
             string ten = txtTen.Text;
             string diachi = txtDiaChi.Text;
             string sdt = txtSDT.Text;
-            if(kiemTraDuLieu(ten, diachi, sdt))
+            if (kiemTraDuLieu(ten, diachi, sdt))
             {
-                int ketqua = KhachHangControl.themDuLieu(ten, diachi, sdt);
-                if(ketqua > 0)
+                int ketqua = NhaCungCapControl.themDuLieu(ten, diachi, sdt);
+                if (ketqua > 0)
                 {
                     MessageBox.Show("thêm thành công");
                     this.Close();

@@ -15,7 +15,7 @@ namespace QuanLyBanBanh
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);// taolahuy1612
-            Application.Run(new frmDangNhap());
+            Application.Run(new frmChinh());
 
         }
     }
