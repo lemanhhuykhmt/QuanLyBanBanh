@@ -86,6 +86,17 @@ namespace QuanLyBanBanh.GUI
                 frm.Visible = true;
                 tpBanHang.Controls.Add(frm);
             }
+            if (tab == 2)
+
+            {
+                ucSanPham frm = new ucSanPham();
+                //frm.TopLevel = false;
+
+                //frm.Parent = tc1.Controls[tc1.SelectedIndex];
+                frm.Size = new Size(tc1.Controls[tc1.SelectedIndex].Width, tc1.Controls[tc1.SelectedIndex].Height);
+                frm.Visible = true;
+                tpHangHoa.Controls.Add(frm);
+            }
             else if (tab == 4)
             {
                 ucKhachHang frm = new ucKhachHang();

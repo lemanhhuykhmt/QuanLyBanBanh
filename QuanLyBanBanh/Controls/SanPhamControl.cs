@@ -26,13 +26,13 @@ namespace QuanLyBanBanh.Controls
         }
         public static DataTable layDanhSach() // lấy thông tin khách hàng có id là ..
         {
-            string query = "select MaSP, TenSP, TenLoaiSP, DonGia, DonViDo, HSD, NSX SoLuong from SanPham as sp, LoaiSP as loai where ConDung = 1 and sp.MaLoaiSP = loai.MaLoaiSP";//lấy ra thông tin khách hàng có mã
+            string query = "select MaSP, TenSP, TenLoaiSP, DonGia, DonViDo, HSD, NSX, SoLuong from SanPham as sp, LoaiSP as loai where ConDung = 1 and sp.MaLoaiSP = loai.MaLoaiSP";//lấy ra thông tin khách hàng có mã
             DataTable dt = DataProvider.Instance.ExecuteQuery(query);
             return dt;
         }
         public static DataTable layThongTin(int id) // lấy thông tin khách hàng có id là ..
         {
-            string query = "select * from SanPham where MaSP = @masp";//lấy ra thông tin khách hàng có mã
+            string query = "select MaSP, TenSP, TenLoaiSP, DonGia, DonViDo, HSD, NSX, SoLuong from SanPham, LoaiSP where MaSP = @masp and SanPham.MaLoaiSP = LoaiSP.MaLoaiSP";//lấy ra thông tin khách hàng có mã
             DataTable dt = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
             return dt;
         }
@@ -52,6 +52,16 @@ namespace QuanLyBanBanh.Controls
             string query = "select * from (select MaSP, TenSP, TenLoaiSP, DonGia, DonViDo, HSD, NSX SoLuong from SanPham as sp, LoaiSP as loai where ConDung = 1 and sp.MaLoaiSP = loai.MaLoaiSP)" + 
                 " where MaSP like @ma or TenSP like @ten or TenLoaiSP like @loai or DonViDo like @donvido";
             return DataProvider.Instance.ExecuteQuery(query, new object[] { str, str, str, str });
+        }
+        public static DataTable layDanhSachLoaiSP()
+        {
+            string query = "select MaLoaiSP, TenLoaiSP from LoaiSP";
+            return DataProvider.Instance.ExecuteQuery(query);
+        }
+        public static int layIDLoaiSP(string ten)
+        {
+            string query = "select MaLoaiSP from LoaiSP where TenLoaiSP like @ten";
+            return (int) DataProvider.Instance.ExecuteScalar(query, new object[] { ten});
         }
     }
 }

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Controls\AccountControl.cs" />
     <Compile Include="Controls\DataProvider.cs" />
+    <Compile Include="Controls\HoaDonBanControl.cs" />
     <Compile Include="Controls\KhachHangControl.cs" />
     <Compile Include="Controls\NhaCungCapControl.cs" />
     <Compile Include="Controls\NhanVienControl.cs" />
@@ -124,6 +125,12 @@
     <Compile Include="GUI\UC\ucBanHang.Designer.cs">
       <DependentUpon>ucBanHang.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UC\ucHoaDonBan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UC\ucHoaDonBan.Designer.cs">
+      <DependentUpon>ucHoaDonBan.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\UC\ucKhachHang.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -183,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Sua\frmSuaNCC.resx">
       <DependentUpon>frmSuaNCC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Sua\frmSuaSP.resx">
+      <DependentUpon>frmSuaSP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\UC\ucBanHang.resx">
       <DependentUpon>ucBanHang.cs</DependentUpon>
