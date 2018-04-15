@@ -15,6 +15,7 @@ namespace QuanLyBanBanh.GUI
 {
     public partial class frmChinh : Form
     {
+        private int idNV;
         public delegate void delGuiThoat(bool thoatLuon);
         public delGuiThoat guiThoat;
         private bool dangXuat = false;
@@ -23,23 +24,12 @@ namespace QuanLyBanBanh.GUI
             InitializeComponent();
             loadData();
         }
-        public frmChinh(int loai)
+        public frmChinh(string tenDangNhap)
         {
             InitializeComponent();
-            if (loai == 1) // admin
-            {
-               
-            }
-            else if (loai == 2) // bán hàng
-            {
-                pnAdmin.Enabled = false;
-                pnKho.Enabled = false;
-            }
-            else if (loai == 3) // nhập kho
-            {
-                pnAdmin.Enabled = false;
-                pnBanHang.Enabled = false;
-            }
+            lbChaoMung.Text = "Xin chào: " + tenDangNhap;
+            // lấy id thông qua tenDangNhap
+            idNV = (int) DataProvider.Instance.ExecuteScalar("select MaNV from Account where TenDangNhap = @tendangnhap", new object[] { tenDangNhap });
         }
         public void loadData()
         {
@@ -78,7 +68,7 @@ namespace QuanLyBanBanh.GUI
             if (tab == 1)
 
             {
-                ucBanHang frm = new ucBanHang();
+                ucHoaDonBan frm = new ucHoaDonBan(idNV);
                 //frm.TopLevel = false;
 
                 //frm.Parent = tc1.Controls[tc1.SelectedIndex];
@@ -115,7 +105,10 @@ namespace QuanLyBanBanh.GUI
 
         private void mnuAdminQuanLyNV_Click(object sender, EventArgs e)
         {
-
+            frmAdmin f = new frmAdmin();
+            this.Hide();
+            f.ShowDialog();
+            this.Show();
         }
     }
 }

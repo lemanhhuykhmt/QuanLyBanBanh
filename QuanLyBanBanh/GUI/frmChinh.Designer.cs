@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAdminQuanLyNV = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinCáNhânToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngNhậpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thôngTinCáNhânToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -37,28 +39,10 @@
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bánHàngToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.hàngHóaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuAdminQuanLyNV = new System.Windows.Forms.ToolStripMenuItem();
             this.tc1 = new System.Windows.Forms.TabControl();
             this.tpHome = new System.Windows.Forms.TabPage();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pnAdmin = new System.Windows.Forms.Panel();
-            this.button13 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
-            this.pnKho = new System.Windows.Forms.Panel();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.pnBanHang = new System.Windows.Forms.Panel();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbChaoMung = new System.Windows.Forms.Label();
+            this.lb1 = new System.Windows.Forms.Label();
             this.tpBanHang = new System.Windows.Forms.TabPage();
             this.tpHangHoa = new System.Windows.Forms.TabPage();
             this.tpNhapKho = new System.Windows.Forms.TabPage();
@@ -66,15 +50,11 @@
             this.tpNhaCungCap = new System.Windows.Forms.TabPage();
             this.tpThuChi = new System.Windows.Forms.TabPage();
             this.tpThongKe = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbChaoMung = new System.Windows.Forms.Label();
             this.btnDangXuat = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.tc1.SuspendLayout();
             this.tpHome.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.pnAdmin.SuspendLayout();
-            this.pnKho.SuspendLayout();
-            this.pnBanHang.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,6 +71,21 @@
             this.menuStrip1.Size = new System.Drawing.Size(1227, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // adminToolStripMenuItem
+            // 
+            this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuAdminQuanLyNV});
+            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
+            this.adminToolStripMenuItem.Text = "Admin";
+            // 
+            // mnuAdminQuanLyNV
+            // 
+            this.mnuAdminQuanLyNV.Name = "mnuAdminQuanLyNV";
+            this.mnuAdminQuanLyNV.Size = new System.Drawing.Size(201, 26);
+            this.mnuAdminQuanLyNV.Text = "Quản lý nhân viên";
+            this.mnuAdminQuanLyNV.Click += new System.EventHandler(this.mnuAdminQuanLyNV_Click);
             // 
             // thôngTinCáNhânToolStripMenuItem
             // 
@@ -145,21 +140,6 @@
             this.hàngHóaToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
             this.hàngHóaToolStripMenuItem.Text = "Hàng Hóa";
             // 
-            // adminToolStripMenuItem
-            // 
-            this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuAdminQuanLyNV});
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(65, 24);
-            this.adminToolStripMenuItem.Text = "Admin";
-            // 
-            // mnuAdminQuanLyNV
-            // 
-            this.mnuAdminQuanLyNV.Name = "mnuAdminQuanLyNV";
-            this.mnuAdminQuanLyNV.Size = new System.Drawing.Size(201, 26);
-            this.mnuAdminQuanLyNV.Text = "Quản lý nhân viên";
-            this.mnuAdminQuanLyNV.Click += new System.EventHandler(this.mnuAdminQuanLyNV_Click);
-            // 
             // tc1
             // 
             this.tc1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -180,7 +160,6 @@
             // 
             // tpHome
             // 
-            this.tpHome.Controls.Add(this.panel2);
             this.tpHome.Controls.Add(this.panel1);
             this.tpHome.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tpHome.Location = new System.Drawing.Point(4, 25);
@@ -191,175 +170,24 @@
             this.tpHome.Text = "Home";
             this.tpHome.UseVisualStyleBackColor = true;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.pnAdmin);
-            this.panel2.Controls.Add(this.pnKho);
-            this.panel2.Controls.Add(this.pnBanHang);
-            this.panel2.Location = new System.Drawing.Point(156, 284);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(885, 353);
-            this.panel2.TabIndex = 1;
-            // 
-            // pnAdmin
-            // 
-            this.pnAdmin.Controls.Add(this.button13);
-            this.pnAdmin.Controls.Add(this.button10);
-            this.pnAdmin.Controls.Add(this.button11);
-            this.pnAdmin.Controls.Add(this.button12);
-            this.pnAdmin.Location = new System.Drawing.Point(40, 219);
-            this.pnAdmin.Name = "pnAdmin";
-            this.pnAdmin.Size = new System.Drawing.Size(816, 71);
-            this.pnAdmin.TabIndex = 3;
-            // 
-            // button13
-            // 
-            this.button13.Location = new System.Drawing.Point(657, 11);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(153, 57);
-            this.button13.TabIndex = 0;
-            this.button13.Text = "Báo Cáo";
-            this.button13.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.Location = new System.Drawing.Point(0, 11);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(153, 57);
-            this.button10.TabIndex = 0;
-            this.button10.Text = "Thêm Nhân Viên";
-            this.button10.UseVisualStyleBackColor = true;
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(222, 11);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(153, 57);
-            this.button11.TabIndex = 0;
-            this.button11.Text = "Khuyến Mãi";
-            this.button11.UseVisualStyleBackColor = true;
-            // 
-            // button12
-            // 
-            this.button12.Location = new System.Drawing.Point(446, 11);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(153, 57);
-            this.button12.TabIndex = 0;
-            this.button12.Text = "Thu Chi";
-            this.button12.UseVisualStyleBackColor = true;
-            // 
-            // pnKho
-            // 
-            this.pnKho.Controls.Add(this.button9);
-            this.pnKho.Controls.Add(this.button6);
-            this.pnKho.Controls.Add(this.button7);
-            this.pnKho.Controls.Add(this.button8);
-            this.pnKho.Location = new System.Drawing.Point(40, 122);
-            this.pnKho.Name = "pnKho";
-            this.pnKho.Size = new System.Drawing.Size(820, 71);
-            this.pnKho.TabIndex = 2;
-            // 
-            // button9
-            // 
-            this.button9.Location = new System.Drawing.Point(657, 3);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(153, 57);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "Nhà Cung Cấp";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(0, 3);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(153, 57);
-            this.button6.TabIndex = 0;
-            this.button6.Text = "Thêm Phiếu Nhập";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(222, 3);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(153, 57);
-            this.button7.TabIndex = 0;
-            this.button7.Text = "Phiếu Nhập";
-            this.button7.UseVisualStyleBackColor = true;
-            // 
-            // button8
-            // 
-            this.button8.Location = new System.Drawing.Point(446, 3);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(153, 57);
-            this.button8.TabIndex = 0;
-            this.button8.Text = "Nguyên Liệu";
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // pnBanHang
-            // 
-            this.pnBanHang.Controls.Add(this.button4);
-            this.pnBanHang.Controls.Add(this.button1);
-            this.pnBanHang.Controls.Add(this.button3);
-            this.pnBanHang.Controls.Add(this.button5);
-            this.pnBanHang.Location = new System.Drawing.Point(39, 3);
-            this.pnBanHang.Name = "pnBanHang";
-            this.pnBanHang.Size = new System.Drawing.Size(821, 90);
-            this.pnBanHang.TabIndex = 1;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(657, 17);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(153, 57);
-            this.button4.TabIndex = 0;
-            this.button4.Text = "Khách Hàng";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(0, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(153, 57);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Thêm hóa đơn";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(222, 17);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(153, 57);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Hóa Đơn";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(446, 17);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(153, 57);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Hàng Hóa";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.Controls.Add(this.lbChaoMung);
+            this.panel1.Controls.Add(this.lb1);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1189, 188);
             this.panel1.TabIndex = 0;
             // 
-            // lbChaoMung
+            // lb1
             // 
-            this.lbChaoMung.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbChaoMung.Location = new System.Drawing.Point(101, 47);
-            this.lbChaoMung.Name = "lbChaoMung";
-            this.lbChaoMung.Size = new System.Drawing.Size(1030, 88);
-            this.lbChaoMung.TabIndex = 0;
-            this.lbChaoMung.Text = "Chào Mừng Đến Với Ứng Dụng Quản Lý Cửa Hàng Bán Bánh";
-            this.lbChaoMung.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lb1.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lb1.Location = new System.Drawing.Point(101, 47);
+            this.lb1.Name = "lb1";
+            this.lb1.Size = new System.Drawing.Size(1030, 88);
+            this.lb1.TabIndex = 0;
+            this.lb1.Text = "Chào Mừng Đến Với Ứng Dụng Quản Lý Cửa Hàng Bán Bánh";
+            this.lb1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tpBanHang
             // 
@@ -431,14 +259,14 @@
             this.tpThongKe.Text = "Thống Kê";
             this.tpThongKe.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lbChaoMung
             // 
-            this.label1.Location = new System.Drawing.Point(949, 32);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 30);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Chào Mừng ....";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lbChaoMung.Location = new System.Drawing.Point(949, 32);
+            this.lbChaoMung.Name = "lbChaoMung";
+            this.lbChaoMung.Size = new System.Drawing.Size(130, 30);
+            this.lbChaoMung.TabIndex = 2;
+            this.lbChaoMung.Text = "Chào Mừng ....";
+            this.lbChaoMung.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnDangXuat
             // 
@@ -457,7 +285,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1227, 739);
             this.Controls.Add(this.btnDangXuat);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbChaoMung);
             this.Controls.Add(this.tc1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -468,10 +296,6 @@
             this.menuStrip1.PerformLayout();
             this.tc1.ResumeLayout(false);
             this.tpHome.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
-            this.pnAdmin.ResumeLayout(false);
-            this.pnKho.ResumeLayout(false);
-            this.pnBanHang.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -497,26 +321,10 @@
         private System.Windows.Forms.TabPage tpNhaCungCap;
         private System.Windows.Forms.TabPage tpThuChi;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label lb1;
         private System.Windows.Forms.Label lbChaoMung;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDangXuat;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TabPage tpThongKe;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button13;
-        private System.Windows.Forms.Button button12;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Panel pnAdmin;
-        private System.Windows.Forms.Panel pnKho;
-        private System.Windows.Forms.Panel pnBanHang;
         private System.Windows.Forms.ToolStripMenuItem hàngHóaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuAdminQuanLyNV;
