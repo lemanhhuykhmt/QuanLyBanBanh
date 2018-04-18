@@ -25,6 +25,23 @@ namespace QuanLyBanBanh.Controls
             string query = "select MaKM, TenKM from KhuyenMai ";
             return DataProvider.Instance.ExecuteQuery(query);
         }
-
+        public static double layGiaTri(string ten)
+        {
+            if(ten.Equals("-----none-----"))
+            {
+                return 0;
+            }
+            string query = "select GiaTri from KhuyenMai where TenKM = @makm";
+            return (double)DataProvider.Instance.ExecuteScalar(query,new object[]{ ten});
+        }
+        public static int layLoaiKhuyenMai(string ten)
+        {
+            if(ten.Equals("-----none-----"))
+            {
+                return 0;
+            }
+            string query = "select LoaiKM from KhuyenMai where TenKM = @makm";
+            return (int) DataProvider.Instance.ExecuteScalar(query, new object[] { ten });
+        }
     }
 }

@@ -49,8 +49,8 @@ namespace QuanLyBanBanh.Controls
         public static DataTable timKiem(object obj)
         {
             string str = "%" + obj.ToString() + "%";
-            string query = "select * from (select MaSP, TenSP, TenLoaiSP, DonGia, DonViDo, HSD, NSX SoLuong from SanPham as sp, LoaiSP as loai where ConDung = 1 and sp.MaLoaiSP = loai.MaLoaiSP)" + 
-                " where MaSP like @ma or TenSP like @ten or TenLoaiSP like @loai or DonViDo like @donvido";
+            string query = "select * from (select MaSP, TenSP, TenLoaiSP, DonGia, DonViDo, HSD, NSX, SoLuong from SanPham as sp, LoaiSP as loai where ConDung = 1 and sp.MaLoaiSP = loai.MaLoaiSP) as a" + 
+                " where a.MaSP like @ma or a.TenSP like @ten or a.TenLoaiSP like @loai or a.DonViDo like @donvido";
             return DataProvider.Instance.ExecuteQuery(query, new object[] { str, str, str, str });
         }
         public static DataTable layDanhSachLoaiSP()

@@ -58,7 +58,7 @@ namespace QuanLyBanBanh.Model
                 listSanPham.RemoveAt(vitri);
             }
         }
-        private int isContain(int id)// kiểm tra danh sách có mã id chưa, nếu đúng trả về vị trị của nó trong list
+        public int isContain(int id)// kiểm tra danh sách có mã id chưa, nếu đúng trả về vị trị của nó trong list
         {
             for(int i = 0; i < listSanPham.Count; ++i)
             {

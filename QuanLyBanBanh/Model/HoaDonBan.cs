@@ -67,7 +67,7 @@ namespace QuanLyBanBanh.Model
             ngayLap = DateTime.Now;
             tenNV = "";
             tenKH = "";
-            tenKM = "";
+            tenKM = "-----none-----";
             thanhToan = 0;
             trangThai = 0;
         }
@@ -86,6 +86,26 @@ namespace QuanLyBanBanh.Model
         public void Luu()
         {
 
+        }
+
+        public void tinhThanhToan()
+        {
+            int loaiKM = KhuyenMaiControl.layLoaiKhuyenMai(tenKM);
+            double giaTri = KhuyenMaiControl.layGiaTri(tenKM);
+
+            if(loaiKM == 0)
+            {
+                thanhToan = chiTiet.tinhTongTien();
+            }
+            else if(loaiKM == 1) // %
+            {
+                thanhToan = chiTiet.tinhTongTien() - chiTiet.tinhTongTien() * giaTri / 100;
+            }
+            else if(loaiKM == 2) // trừ thẳng
+            {
+                thanhToan = chiTiet.tinhTongTien() - giaTri;
+                if (thanhToan < 0) thanhToan = 0;
+            }
         }
     }
 }
