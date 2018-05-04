@@ -19,6 +19,11 @@ namespace QuanLyBanBanh.Controls
         {
 
         }
+        public static int themDuLieu(string ten, string diachi, string sdt)
+        {
+            string query = "exec themkh @ten , @diachi , @sdt";
+            return DataProvider.Instance.ExecuteNonQuery(query, new String[] { ten, diachi, sdt });
+        }
         public static DataTable layDanhSach() // lấy thông tin khách hàng có id là ..
         {
             string query = "select * from KhachHang";//lấy ra thông tin khách hàng có mã
@@ -30,6 +35,15 @@ namespace QuanLyBanBanh.Controls
             string query = "select * from KhachHang where MaKH = @makh";//lấy ra thông tin khách hàng có mã
             DataTable dt = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
             return dt;
+        }
+        public static string layTenKH(int id)
+        {
+            if(id == 0)
+            {
+                return "";
+            }
+            string query = "select TenKH from KhachHang where MaKH = @ma";
+            return DataProvider.Instance.ExecuteScalar(query, new object[] { id}).ToString();
         }
         public static int suaThongTin(int id, string ten, string diachi, string sdt) // sửa thông tin của khách hàng
         {

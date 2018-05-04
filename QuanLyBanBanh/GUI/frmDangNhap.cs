@@ -46,7 +46,7 @@ namespace QuanLyBanBanh.GUI
                 int loai = 0; // loại quyền hạn của acc
                 if ((loai = AccountControl.Login(tenDangNhap, matKhau)) > 0) // kiểm tra trùng tên đn và mk không? và trả về quyền
                 {
-                    MoFormChinh(loai); // gọi hàm mở frm chính
+                    MoFormChinh(tenDangNhap); // gọi hàm mở frm chính
                 }
                 else
                 {
@@ -84,10 +84,10 @@ namespace QuanLyBanBanh.GUI
             }
             
         }
-        private void MoFormChinh(int loai)
+        private void MoFormChinh(string tenDangNhap)
         {
             this.Hide(); // ẩn frm đăng nhập
-            frmChinh f = new frmChinh(loai); // truyển loại quyền hạn acc cho frm Chính
+            frmChinh f = new frmChinh(tenDangNhap); // truyển loại quyền hạn acc cho frm Chính
             f.guiThoat = new frmChinh.delGuiThoat(doiThoatLuon); // gửi hàm "đổi thoát luôn" để closing của Chính có thể thay đổi
             f.ShowDialog(); // mở Chính
             this.Show(); // xong thì show lại
