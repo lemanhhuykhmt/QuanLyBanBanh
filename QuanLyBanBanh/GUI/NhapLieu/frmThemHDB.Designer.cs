@@ -36,6 +36,12 @@
             this.txtTimKiemSP = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dgvDanhSachSP = new System.Windows.Forms.DataGridView();
+            this.colMa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDonGiaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDonViDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colThem = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel3 = new System.Windows.Forms.Panel();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
@@ -61,12 +67,9 @@
             this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colXoa = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.colMa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTenSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDonGiaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colDonViDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colThem = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.lbNgayLap = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachSP)).BeginInit();
@@ -78,6 +81,7 @@
             this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTiet)).BeginInit();
+            this.panel10.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -99,6 +103,7 @@
             this.btnThemKH.Size = new System.Drawing.Size(41, 32);
             this.btnThemKH.TabIndex = 4;
             this.btnThemKH.UseVisualStyleBackColor = true;
+            this.btnThemKH.Click += new System.EventHandler(this.btnThemKH_Click);
             // 
             // lbTenKH
             // 
@@ -169,6 +174,48 @@
             this.dgvDanhSachSP.TabIndex = 1;
             this.dgvDanhSachSP.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSachSP_CellContentClick);
             // 
+            // colMa
+            // 
+            this.colMa.FillWeight = 28.30866F;
+            this.colMa.HeaderText = "Mã";
+            this.colMa.Name = "colMa";
+            this.colMa.ReadOnly = true;
+            // 
+            // colTenSP
+            // 
+            this.colTenSP.FillWeight = 99.04739F;
+            this.colTenSP.HeaderText = "Tên sp";
+            this.colTenSP.Name = "colTenSP";
+            this.colTenSP.ReadOnly = true;
+            // 
+            // colDonGiaSP
+            // 
+            this.colDonGiaSP.FillWeight = 58.26318F;
+            this.colDonGiaSP.HeaderText = "Đơn Giá";
+            this.colDonGiaSP.Name = "colDonGiaSP";
+            this.colDonGiaSP.ReadOnly = true;
+            // 
+            // colDonViDo
+            // 
+            this.colDonViDo.FillWeight = 34.9579F;
+            this.colDonViDo.HeaderText = "DVD";
+            this.colDonViDo.Name = "colDonViDo";
+            this.colDonViDo.ReadOnly = true;
+            // 
+            // colCon
+            // 
+            this.colCon.FillWeight = 40.78422F;
+            this.colCon.HeaderText = "Còn";
+            this.colCon.Name = "colCon";
+            this.colCon.ReadOnly = true;
+            // 
+            // colThem
+            // 
+            this.colThem.FillWeight = 17.47895F;
+            this.colThem.HeaderText = "";
+            this.colThem.Name = "colThem";
+            this.colThem.ReadOnly = true;
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.btnThoat);
@@ -203,6 +250,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.panel10);
             this.panel4.Controls.Add(this.panel7);
             this.panel4.Controls.Add(this.panel9);
             this.panel4.Controls.Add(this.panel8);
@@ -279,7 +327,7 @@
             // 
             this.panel8.Controls.Add(this.lbThanhToan);
             this.panel8.Controls.Add(this.label4);
-            this.panel8.Location = new System.Drawing.Point(304, 104);
+            this.panel8.Location = new System.Drawing.Point(304, 117);
             this.panel8.Name = "panel8";
             this.panel8.Size = new System.Drawing.Size(288, 48);
             this.panel8.TabIndex = 2;
@@ -307,7 +355,7 @@
             // 
             this.panel6.Controls.Add(this.lbTongTien);
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Location = new System.Drawing.Point(304, 3);
+            this.panel6.Location = new System.Drawing.Point(304, 57);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(288, 48);
             this.panel6.TabIndex = 2;
@@ -370,11 +418,11 @@
             this.colGia,
             this.colXoa});
             this.dgvChiTiet.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgvChiTiet.Location = new System.Drawing.Point(3, 14);
+            this.dgvChiTiet.Location = new System.Drawing.Point(3, 3);
             this.dgvChiTiet.Name = "dgvChiTiet";
             this.dgvChiTiet.RowHeadersVisible = false;
             this.dgvChiTiet.RowTemplate.Height = 24;
-            this.dgvChiTiet.Size = new System.Drawing.Size(599, 374);
+            this.dgvChiTiet.Size = new System.Drawing.Size(599, 385);
             this.dgvChiTiet.TabIndex = 0;
             this.dgvChiTiet.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChiTiet_CellContentClick);
             this.dgvChiTiet.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvChiTiet_CellEndEdit);
@@ -416,41 +464,33 @@
             this.colXoa.Text = "x";
             this.colXoa.UseColumnTextForButtonValue = true;
             // 
-            // colMa
+            // panel10
             // 
-            this.colMa.FillWeight = 28.30866F;
-            this.colMa.HeaderText = "Mã";
-            this.colMa.Name = "colMa";
+            this.panel10.Controls.Add(this.lbNgayLap);
+            this.panel10.Controls.Add(this.label6);
+            this.panel10.Location = new System.Drawing.Point(304, 3);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(288, 48);
+            this.panel10.TabIndex = 3;
             // 
-            // colTenSP
+            // lbNgayLap
             // 
-            this.colTenSP.FillWeight = 99.04739F;
-            this.colTenSP.HeaderText = "Tên sp";
-            this.colTenSP.Name = "colTenSP";
+            this.lbNgayLap.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNgayLap.Location = new System.Drawing.Point(134, 8);
+            this.lbNgayLap.Name = "lbNgayLap";
+            this.lbNgayLap.Size = new System.Drawing.Size(151, 30);
+            this.lbNgayLap.TabIndex = 1;
+            this.lbNgayLap.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // colDonGiaSP
+            // label6
             // 
-            this.colDonGiaSP.FillWeight = 58.26318F;
-            this.colDonGiaSP.HeaderText = "Đơn Giá";
-            this.colDonGiaSP.Name = "colDonGiaSP";
-            // 
-            // colDonViDo
-            // 
-            this.colDonViDo.FillWeight = 34.9579F;
-            this.colDonViDo.HeaderText = "DVD";
-            this.colDonViDo.Name = "colDonViDo";
-            // 
-            // colCon
-            // 
-            this.colCon.FillWeight = 40.78422F;
-            this.colCon.HeaderText = "Còn";
-            this.colCon.Name = "colCon";
-            // 
-            // colThem
-            // 
-            this.colThem.FillWeight = 17.47895F;
-            this.colThem.HeaderText = "";
-            this.colThem.Name = "colThem";
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(3, 8);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(107, 30);
+            this.label6.TabIndex = 0;
+            this.label6.Text = "Ngày Lập:";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // frmThemHDB
             // 
@@ -474,6 +514,7 @@
             this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvChiTiet)).EndInit();
+            this.panel10.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -519,5 +560,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colDonViDo;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCon;
         private System.Windows.Forms.DataGridViewButtonColumn colThem;
+        private System.Windows.Forms.Panel panel10;
+        private System.Windows.Forms.Label lbNgayLap;
+        private System.Windows.Forms.Label label6;
     }
 }

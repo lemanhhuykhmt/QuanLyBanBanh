@@ -28,112 +28,200 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.lvDanhSach = new System.Windows.Forms.ListView();
-            this.ckbTatCa = new System.Windows.Forms.CheckBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnNhap = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
-            this.cbLoaiTimKiem = new System.Windows.Forms.ComboBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.dgvDanhSach = new System.Windows.Forms.DataGridView();
+            this.colCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colMa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNgaySinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colGioiTinh = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colSua = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colXoa = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
+            // panel1
             // 
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(167, 68);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Danh Sách Nhân Viên";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.panel1.Controls.Add(this.txtTimKiem);
+            this.panel1.Controls.Add(this.btnXoa);
+            this.panel1.Controls.Add(this.btnNhap);
+            this.panel1.Controls.Add(this.btnTimKiem);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(967, 58);
+            this.panel1.TabIndex = 8;
             // 
-            // btnThem
+            // txtTimKiem
             // 
-            this.btnThem.Location = new System.Drawing.Point(735, 14);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(107, 40);
-            this.btnThem.TabIndex = 1;
-            this.btnThem.Text = "Thêm";
-            this.btnThem.UseVisualStyleBackColor = true;
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            this.txtTimKiem.Location = new System.Drawing.Point(43, 23);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(198, 22);
+            this.txtTimKiem.TabIndex = 5;
+            this.txtTimKiem.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtTimKiem_PreviewKeyDown);
             // 
-            // lvDanhSach
+            // btnXoa
             // 
-            this.lvDanhSach.CheckBoxes = true;
-            this.lvDanhSach.FullRowSelect = true;
-            this.lvDanhSach.GridLines = true;
-            this.lvDanhSach.Location = new System.Drawing.Point(3, 96);
-            this.lvDanhSach.Name = "lvDanhSach";
-            this.lvDanhSach.Size = new System.Drawing.Size(944, 491);
-            this.lvDanhSach.TabIndex = 2;
-            this.lvDanhSach.UseCompatibleStateImageBehavior = false;
-            this.lvDanhSach.View = System.Windows.Forms.View.Details;
+            this.btnXoa.Location = new System.Drawing.Point(813, 23);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 0;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
             // 
-            // ckbTatCa
+            // btnNhap
             // 
-            this.ckbTatCa.AutoSize = true;
-            this.ckbTatCa.Location = new System.Drawing.Point(3, 71);
-            this.ckbTatCa.Name = "ckbTatCa";
-            this.ckbTatCa.Size = new System.Drawing.Size(102, 21);
-            this.ckbTatCa.TabIndex = 14;
-            this.ckbTatCa.Text = "Chọn tất cả";
-            this.ckbTatCa.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(386, 23);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 22);
-            this.textBox1.TabIndex = 15;
+            this.btnNhap.Location = new System.Drawing.Point(719, 22);
+            this.btnNhap.Name = "btnNhap";
+            this.btnNhap.Size = new System.Drawing.Size(75, 23);
+            this.btnNhap.TabIndex = 0;
+            this.btnNhap.Text = "Thêm khách hàng";
+            this.btnNhap.UseVisualStyleBackColor = true;
+            this.btnNhap.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(552, 23);
+            this.btnTimKiem.Location = new System.Drawing.Point(247, 23);
             this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(40, 22);
-            this.btnTimKiem.TabIndex = 16;
-            this.btnTimKiem.Text = "button2";
+            this.btnTimKiem.Size = new System.Drawing.Size(97, 23);
+            this.btnTimKiem.TabIndex = 6;
+            this.btnTimKiem.Text = "Tìm kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
-            // cbLoaiTimKiem
+            // panel2
             // 
-            this.cbLoaiTimKiem.FormattingEnabled = true;
-            this.cbLoaiTimKiem.Items.AddRange(new object[] {
-            "Tất cả",
-            "Họ Tên",
-            "Ngày Sinh",
-            "Lương",
-            "Số Điện Thoại"});
-            this.cbLoaiTimKiem.Location = new System.Drawing.Point(386, 67);
-            this.cbLoaiTimKiem.Name = "cbLoaiTimKiem";
-            this.cbLoaiTimKiem.Size = new System.Drawing.Size(137, 24);
-            this.cbLoaiTimKiem.TabIndex = 17;
+            this.panel2.Controls.Add(this.dgvDanhSach);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(0, 64);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(967, 538);
+            this.panel2.TabIndex = 11;
+            // 
+            // dgvDanhSach
+            // 
+            this.dgvDanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colCheck,
+            this.colMa,
+            this.colTen,
+            this.colNgaySinh,
+            this.colSDT,
+            this.colGioiTinh,
+            this.colLuong,
+            this.colSua,
+            this.colXoa});
+            this.dgvDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDanhSach.Location = new System.Drawing.Point(0, 0);
+            this.dgvDanhSach.Name = "dgvDanhSach";
+            this.dgvDanhSach.RowHeadersVisible = false;
+            this.dgvDanhSach.RowTemplate.Height = 24;
+            this.dgvDanhSach.Size = new System.Drawing.Size(967, 538);
+            this.dgvDanhSach.TabIndex = 0;
+            this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
+            // 
+            // colCheck
+            // 
+            this.colCheck.FillWeight = 20F;
+            this.colCheck.HeaderText = "";
+            this.colCheck.Name = "colCheck";
+            // 
+            // colMa
+            // 
+            this.colMa.DataPropertyName = "colMa";
+            this.colMa.FillWeight = 30F;
+            this.colMa.HeaderText = "Mã";
+            this.colMa.Name = "colMa";
+            // 
+            // colTen
+            // 
+            this.colTen.FillWeight = 150F;
+            this.colTen.HeaderText = "Tên Giáo Viên";
+            this.colTen.Name = "colTen";
+            // 
+            // colNgaySinh
+            // 
+            this.colNgaySinh.FillWeight = 70F;
+            this.colNgaySinh.HeaderText = "Ngày Sinh";
+            this.colNgaySinh.Name = "colNgaySinh";
+            // 
+            // colSDT
+            // 
+            this.colSDT.HeaderText = "SĐT";
+            this.colSDT.Name = "colSDT";
+            // 
+            // colGioiTinh
+            // 
+            this.colGioiTinh.FillWeight = 70F;
+            this.colGioiTinh.HeaderText = "Giới Tính";
+            this.colGioiTinh.Name = "colGioiTinh";
+            // 
+            // colLuong
+            // 
+            this.colLuong.FillWeight = 90F;
+            this.colLuong.HeaderText = "Lương";
+            this.colLuong.Name = "colLuong";
+            // 
+            // colSua
+            // 
+            this.colSua.FillWeight = 15F;
+            this.colSua.HeaderText = "";
+            this.colSua.Name = "colSua";
+            this.colSua.Text = "i";
+            this.colSua.UseColumnTextForButtonValue = true;
+            // 
+            // colXoa
+            // 
+            this.colXoa.FillWeight = 15F;
+            this.colXoa.HeaderText = "";
+            this.colXoa.Name = "colXoa";
+            this.colXoa.Text = "x";
+            this.colXoa.UseColumnTextForButtonValue = true;
             // 
             // ucNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.cbLoaiTimKiem);
-            this.Controls.Add(this.btnTimKiem);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.ckbTatCa);
-            this.Controls.Add(this.lvDanhSach);
-            this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Name = "ucNhanVien";
             this.Size = new System.Drawing.Size(967, 602);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.ListView lvDanhSach;
-        private System.Windows.Forms.CheckBox ckbTatCa;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.Button btnXoa;
+        private System.Windows.Forms.Button btnNhap;
         private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.ComboBox cbLoaiTimKiem;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.DataGridView dgvDanhSach;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colCheck;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colMa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTen;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNgaySinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colSDT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colGioiTinh;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colLuong;
+        private System.Windows.Forms.DataGridViewButtonColumn colSua;
+        private System.Windows.Forms.DataGridViewButtonColumn colXoa;
     }
 }

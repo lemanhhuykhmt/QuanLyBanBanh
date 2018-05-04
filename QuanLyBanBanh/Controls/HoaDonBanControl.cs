@@ -53,13 +53,13 @@ namespace QuanLyBanBanh.Controls
                 + "where a.MaSP = b.ma";
             return DataProvider.Instance.ExecuteQuery(query, new object[] { id });
         }
-        //public static DataTable timKiem(object obj)
-        //{
-        //    string str = "%" + obj.ToString() + "%";
-        //    string query = "select * from (select MaSP, TenSP, TenLoaiSP, DonGia, DonViDo, HSD, NSX SoLuong from SanPham as sp, LoaiSP as loai where ConDung = 1 and sp.MaLoaiSP = loai.MaLoaiSP)" +
-        //        " where MaSP like @ma or TenSP like @ten or TenLoaiSP like @loai or DonViDo like @donvido";
-        //    return DataProvider.Instance.ExecuteQuery(query, new object[] { str, str, str, str });
-        //}
+        public static DataTable timKiem(object obj)
+        {
+            string str = "%" + obj.ToString() + "%";
+            string query = "select * from (select MaHDB, TenKH, TenNV, NgayLap, TrangThai from HoaDonBan as hdb, NhanVien as nv, KhachHang as kh where hdb.MaNV = nv.MaNV and hdb.MaKH = kh.MaKH) as x" +
+                " where x.MaHDB like @ma or x.TenKH like @tenkh or x.TenNV like @tennv or x.NgayLap like @ngaylap";
+            return DataProvider.Instance.ExecuteQuery(query, new object[] { str, str, str, str });
+        }
         //public static DataTable layDanhSachLoaiSP()
         //{
         //    string query = "select MaLoaiSP, TenLoaiSP from LoaiSP";
@@ -70,25 +70,25 @@ namespace QuanLyBanBanh.Controls
         //    string query = "select MaLoaiSP from LoaiSP where TenLoaiSP like @ten";
         //    return (int)DataProvider.Instance.ExecuteScalar(query, new object[] { ten });
         //}
-        public static string layTenKhachHang(int idhdb) // lấy ra tên khách hàng có mã hdb
+        public static int layIDKhachHang(int idhdb) // lấy ra tên khách hàng có mã hdb
         {
-            string query = "select TenKH from HoaDonBan, KhachHang where MaHDB = @id and HoaDonBan.MaKH = KhachHang.MaKH";
+            string query = "select HoaDonBan.MaKH from HoaDonBan, KhachHang where MaHDB = @id and HoaDonBan.MaKH = KhachHang.MaKH";
             DataTable dt = DataProvider.Instance.ExecuteQuery(query, new object[] { idhdb});
             if (dt.Rows.Count == 0)
             {
-                return "";
+                return 0;
             }
-            return dt.Rows[0][0].ToString();
+            return Convert.ToInt32(dt.Rows[0][0].ToString());
         }
-        public static string layTenNhanVien(int idhdb)
+        public static int layIDNhanVien(int idhdb)
         {
-            string query = "select TenNV from HoaDonBan, NhanVien where MaHDB = @id and HoaDonBan.MaNV = NhanVien.MaNV";
+            string query = "select NhanVien.MaNV from HoaDonBan, NhanVien where MaHDB = @id and HoaDonBan.MaNV = NhanVien.MaNV";
             DataTable dt = DataProvider.Instance.ExecuteQuery(query, new object[] { idhdb });
             if (dt.Rows.Count == 0)
             {
-                return "";
+                return 0;
             }
-            return dt.Rows[0][0].ToString();
+            return Convert.ToInt32(dt.Rows[0][0].ToString());
         }
         public static int layTrangThai(int idhdb)
         {

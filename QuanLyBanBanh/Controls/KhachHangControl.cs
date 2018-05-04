@@ -36,6 +36,15 @@ namespace QuanLyBanBanh.Controls
             DataTable dt = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
             return dt;
         }
+        public static string layTenKH(int id)
+        {
+            if(id == 0)
+            {
+                return "";
+            }
+            string query = "select TenKH from KhachHang where MaKH = @ma";
+            return DataProvider.Instance.ExecuteScalar(query, new object[] { id}).ToString();
+        }
         public static int suaThongTin(int id, string ten, string diachi, string sdt) // sửa thông tin của khách hàng
         {
             string query = "exec suakh @id , @ten , @diachi , @sdt";

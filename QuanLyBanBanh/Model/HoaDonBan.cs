@@ -1,6 +1,7 @@
 ﻿using QuanLyBanBanh.Controls;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,8 +13,8 @@ namespace QuanLyBanBanh.Model
         private ChiTietHDB chiTiet;
         private int id;
         private DateTime ngayLap;
-        private string tenNV;
-        private string tenKH;
+        private int idNV;
+        private int idKH;
         private int trangThai;
         private string tenKM;
         private double thanhToan;
@@ -33,15 +34,15 @@ namespace QuanLyBanBanh.Model
             set { ngayLap = value; }
             get { return ngayLap; }
         }
-        public string TenNV
+        public int IdNV
         {
-            set { tenNV = value; }
-            get { return tenNV; }
+            set { idNV = value; }
+            get { return idNV; }
         }
-        public string TenKH
+        public int IdKH
         {
-            set { tenKH = value; }
-            get { return tenKH; }
+            set { idKH = value; }
+            get { return idKH; }
         }
         public string TenKM
         {
@@ -65,8 +66,8 @@ namespace QuanLyBanBanh.Model
             chiTiet = new ChiTietHDB();
             id = 0;
             ngayLap = DateTime.Now;
-            tenNV = "";
-            tenKH = "";
+            idNV = 0;
+            idKH = 0;
             tenKM = "-----none-----";
             thanhToan = 0;
             trangThai = 0;
@@ -75,8 +76,8 @@ namespace QuanLyBanBanh.Model
         {
             chiTiet = new ChiTietHDB(id);
             this.id = id;
-            tenKH = HoaDonBanControl.layTenKhachHang(id);
-            tenNV = HoaDonBanControl.layTenNhanVien(id);
+            idKH = HoaDonBanControl.layIDKhachHang(id);
+            idNV = HoaDonBanControl.layIDNhanVien(id);
             trangThai = HoaDonBanControl.layTrangThai(id);
             tenKM = HoaDonBanControl.layKhuyenMai(id);
             thanhToan = HoaDonBanControl.layThanhToan(id);
@@ -106,6 +107,14 @@ namespace QuanLyBanBanh.Model
                 thanhToan = chiTiet.tinhTongTien() - giaTri;
                 if (thanhToan < 0) thanhToan = 0;
             }
+        }
+        public string layTenNV()
+        {
+            return NhanVienControl.layTenNV(idNV);
+        }
+        public string layTenKH()
+        {
+            return KhachHangControl.layTenKH(idKH);
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using QuanLyBanBanh.Controls;
-using QuanLyBanBanh.Extender;
+using QuanLyBanBanh.GUI.Chon;
 using QuanLyBanBanh.Model;
 using System;
 using System.Collections.Generic;
@@ -15,9 +15,7 @@ namespace QuanLyBanBanh.GUI.NhapLieu
 {
     public partial class frmThemHDB : Form
     {
-        private ListViewExtender extender;
         private HoaDonBan HDB;
-        private int idNV = 0;
         public frmThemHDB()
         {
             InitializeComponent();
@@ -27,35 +25,34 @@ namespace QuanLyBanBanh.GUI.NhapLieu
             HDB = new HoaDonBan();
             loadDanhSachSP();
             loadTongTien();
+            loadNgayLap();
         }
-        public frmThemHDB(int idnv, bool x)
+        public frmThemHDB(int id, bool x)
         {
             InitializeComponent();
-            loadDSKhuyenMai();
-            idNV = idnv;
-           // extender = new ListViewExtender(lvDanhSach);
-            HDB = new HoaDonBan();
+            if (x == true) // hóa đơn mới
+            {
+                loadDSKhuyenMai();
+                HDB = new HoaDonBan();
+                HDB.IdNV = id;
+                loadNhanVien();
+            }
+            else // mở hóa đơn cũ
+            {
+                loadDSKhuyenMai();
+                HDB = new HoaDonBan(id);
+                loadChiTietHDB();
+                loadNhanVien();
+                loadTrangThai();
+                loadKhuyenMai();
+            }
             loadDanhSachSP();
-            loadTongTien();
-            loadNhanVien();
-        }
-        public frmThemHDB(int id)
-        {
-            InitializeComponent();
-            loadDSKhuyenMai();
-            //isNew = false;
-            //extender = new ListViewExtender(lvDanhSach);
-            HDB = new HoaDonBan(id);
-            loadChiTietHDB();
-            loadDanhSachSP();
-            loadKhachHang();
-            loadNhanVien();
-            loadTrangThai();
-            loadKhuyenMai();
             loadTongTien();
             loadThanhToan();
-           
+            loadKhachHang();
+            loadNgayLap();
         }
+        
         private void loadDanhSachSP()
         {
             dgvDanhSachSP.Rows.Clear();
@@ -63,7 +60,6 @@ namespace QuanLyBanBanh.GUI.NhapLieu
             for(int i = 0; i < dt.Rows.Count; ++i)
             {
                 int soluong;
-                //if(dt.Rows[i][0].Equals(HDB.ChiTiet.ListSanPham[i].IdSP))
                 int vitri = HDB.ChiTiet.isContain(Convert.ToInt32(dt.Rows[i][0].ToString()));
                 if (vitri != -1) // nếu sản phẩm có trong HDB
                 {
@@ -76,56 +72,7 @@ namespace QuanLyBanBanh.GUI.NhapLieu
                 dgvDanhSachSP.Rows.Add(new object[] { dt.Rows[i][0], dt.Rows[i][1], dt.Rows[i][3], dt.Rows[i][4], soluong });
                // dgvChiTiet.Rows[dgvChiTiet.Rows.Count - 2].Tag = HDB.ChiTiet.ListSanPham[i].IdSP;
             }
-           /* lvDanhSach.Clear();
-            ColumnHeader colMaSP = new ColumnHeader() { Text = "Mã" };
-            ColumnHeader colTenSP = new ColumnHeader() { Text = "Tên Sản Phẩm" };
-            ColumnHeader colDonGia = new ColumnHeader() { Text = "Giá" };
-            ColumnHeader colDonViDo = new ColumnHeader() { Text = "ĐVĐ" };
-            ColumnHeader colConLai = new ColumnHeader() { Text = "Còn" };
-            ColumnHeader colButtonChon = new ColumnHeader() { Text = "Chọn" };
-            lvDanhSach.Columns.Add(colMaSP);
-            lvDanhSach.Columns.Add(colTenSP);
-            lvDanhSach.Columns.Add(colDonGia);
-            lvDanhSach.Columns.Add(colDonViDo);
-            lvDanhSach.Columns.Add(colConLai);
-            lvDanhSach.Columns.Add(colButtonChon);
-            DataTable dt = SanPhamControl.layDanhSach();
-            ListViewButtonColumn btnChon = new ListViewButtonColumn(5);
-            btnChon.Click += OnButtonActionClick;
-            btnChon.FixedWidth = true;
-            extender.AddColumn(btnChon);
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                ListViewItem item = new ListViewItem(dt.Rows[i][0].ToString());
-                ListViewItem.ListViewSubItem subitem = new ListViewItem.ListViewSubItem(item, dt.Rows[i][0].ToString());
-                //ListViewItem status = new ListViewItem(dt.Rows[i][2].ToString());
-                int soluong;
-                //if(dt.Rows[i][0].Equals(HDB.ChiTiet.ListSanPham[i].IdSP))
-                int vitri = HDB.ChiTiet.isContain(Convert.ToInt32(dt.Rows[i][0].ToString()));
-                if (vitri != -1) // nếu sản phẩm có trong HDB
-                {
-                    soluong = Convert.ToInt32(dt.Rows[i][7].ToString()) - HDB.ChiTiet.ListSanPham[vitri].SoLuong; 
-                }
-                else
-                {
-                    soluong = Convert.ToInt32(dt.Rows[i][7].ToString());
-                }
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = dt.Rows[i][1].ToString() });
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = dt.Rows[i][3].ToString() });
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = dt.Rows[i][4].ToString() });
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = soluong.ToString() });
-                
-                item.SubItems.Add(new ListViewItem.ListViewSubItem() { Text = "+", Tag = dt.Rows[i][0].ToString() });
-                lvDanhSach.Items.Add(item);
-
-            }
-            colMaSP.Width = 30;
-            colTenSP.Width = 140;
-            colDonGia.Width = 60;
-            colDonViDo.Width = 50;
-            colConLai.Width = 40;
-            colButtonChon.Width = 40;
-            */
+           
         }
 
         private void loadChiTietHDB()
@@ -142,30 +89,25 @@ namespace QuanLyBanBanh.GUI.NhapLieu
         }
         private void loadKhachHang()
         {
-            if (HDB.TenKH.Length == 0)
+            if (HDB.layTenKH().Length == 0)
             {
                 lbTenKH.Text = "Khách vãng lai";
             }
             else
             {
-                lbTenKH.Text = HDB.TenKH;
+                lbTenKH.Text = HDB.layTenKH();
             }
         }
         private void loadNhanVien()
         {
-            if(HDB.Id == 0)
-            {
-                HDB.TenNV = NhanVienControl.layTenNV(idNV);
-            }
-            if (HDB.TenNV.Length == 0)
+            if (HDB.layTenNV().Length == 0)
             {
                 lbTenNV.Text = "";
             }
             else
             {
-                lbTenNV.Text = HDB.TenNV;
+                lbTenNV.Text = HDB.layTenNV();
             }
-
         }
         private void loadTrangThai()
         {
@@ -199,22 +141,16 @@ namespace QuanLyBanBanh.GUI.NhapLieu
         {
             HDB.tinhThanhToan();
             lbThanhToan.Text = HDB.ThanhToan.ToString();
-                //
         }
-        private void OnButtonActionClick(object sender, ListViewColumnMouseEventArgs e)
+        private void loadNgayLap()
         {
-            int id = Convert.ToInt32(e.SubItem.Tag);// lấy ra id sp được chọn
-            HDB.ChiTiet.ThemSP(id);// thêm sp vào chi tiết sp
-
-            loadChiTietHDB();
-            loadDanhSachSP();
-            loadTongTien();
-            loadThanhToan();
+            lbNgayLap.Text = HDB.NgayLap.ToString();
         }
+
 
         private void dgvChiTiet_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == dgvChiTiet.Columns["colXoa"].Index)
             {
                 if (e.RowIndex == -1)
                 {
@@ -245,13 +181,19 @@ namespace QuanLyBanBanh.GUI.NhapLieu
 
         private void dgvChiTiet_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            
-            HDB.ChiTiet.ListSanPham[e.RowIndex].SoLuong = Convert.ToInt32(dgvChiTiet.CurrentCell.Value.ToString());
+            if (e.ColumnIndex == dgvChiTiet.Columns["colSoLuong"].Index) // cột số lượng
+            {
+                HDB.ChiTiet.ListSanPham[e.RowIndex].SoLuong = Convert.ToInt32(dgvChiTiet.CurrentCell.Value.ToString());
+                loadDanhSachSP();
+
+            }
+            else if(e.ColumnIndex == dgvChiTiet.Columns["colDonGia"].Index) // cột đơn giá
+            {
+                HDB.ChiTiet.ListSanPham[e.RowIndex].DonGia = float.Parse(dgvChiTiet.CurrentCell.Value.ToString());
+            }
             loadChiTietHDB();
-            loadDanhSachSP();
             loadTongTien();
             loadThanhToan();
-            
         }
 
         private void dgvDanhSachSP_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -309,6 +251,19 @@ namespace QuanLyBanBanh.GUI.NhapLieu
             {
                 txtTimKiemSP.Text = "";
             }
+        }
+
+        private void nhanIDKH(int idkh)
+        {
+            HDB.IdKH = idkh;
+            loadKhachHang();
+        }
+
+        private void btnThemKH_Click(object sender, EventArgs e)
+        {
+            frmChonKH f = new frmChonKH();
+            f.guiIDKH = nhanIDKH;
+            f.ShowDialog();
         }
     }
 }

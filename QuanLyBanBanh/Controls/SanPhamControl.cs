@@ -63,5 +63,11 @@ namespace QuanLyBanBanh.Controls
             string query = "select MaLoaiSP from LoaiSP where TenLoaiSP like @ten";
             return (int) DataProvider.Instance.ExecuteScalar(query, new object[] { ten});
         }
+        public static DataTable layDSSPTheoMH(int id)
+        {
+            string query = "select MaSP, TenSP, TenLoaiSP,DonGia, DonViDo, HSD, NSX, SoLuong from SanPham, LoaiSP, MatHang " +
+                 "where ConDung = 1 and SanPham.MaLoaiSP = LoaiSP.MaLoaiSP and LoaiSP.MaMH = MatHang.MaMH and MatHang.MaMH = @id";
+            return DataProvider.Instance.ExecuteQuery(query, new object[] { id});
+        }
     }
 }

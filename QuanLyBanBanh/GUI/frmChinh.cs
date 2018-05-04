@@ -22,7 +22,6 @@ namespace QuanLyBanBanh.GUI
         public frmChinh()
         {
             InitializeComponent();
-            loadData();
         }
         public frmChinh(string tenDangNhap)
         {
@@ -31,12 +30,7 @@ namespace QuanLyBanBanh.GUI
             // lấy id thông qua tenDangNhap
             idNV = (int) DataProvider.Instance.ExecuteScalar("select MaNV from Account where TenDangNhap = @tendangnhap", new object[] { tenDangNhap });
         }
-        public void loadData()
-        {
 
-            string query = "select * from NhanVien";
-            //dgvData.DataSource = DataProvider.Instance.ExecuteQuery(query);
-        }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
