@@ -33,5 +33,28 @@ namespace QuanLyBanBanh.Controls
             }
             return 0; // k có trả về 0
         }
+
+        public static DataTable layDanhSachNhanVien()
+        {
+            string query = "select nv.MaNV, nv.TenNV, nv.SDT, nv.GioiTinh, nv.NgaySinh, nv.Luong "
+                + " from NhanVien as nv, (select MaNV from NhanVien except select MaNV from Account) as b "
+                + " where nv.MaNV = b.MaNV";
+            return DataProvider.Instance.ExecuteQuery(query);
+        }
+        public static int themDuLieu(string ten, string matkhau, int manv, int quyen)
+        {
+            string query = "exec themacc @ten , @matkhau , @manv , @quyen";
+            return DataProvider.Instance.ExecuteNonQuery(query, new object[] { ten, matkhau, manv, quyen });
+        }
+        public static int xoaThongTin(string ten)
+        {
+            string query = "exec xoaacc @ten";
+            return DataProvider.Instance.ExecuteNonQuery(query, new object[] { ten});
+        }
+        public static int suaMatKhau(string ten, string matkhau)
+        {
+            string query = "exec suaacc @ten , @matkhau";
+            return DataProvider.Instance.ExecuteNonQuery(query, new object[] { ten, matkhau});
+        }
     }
 }

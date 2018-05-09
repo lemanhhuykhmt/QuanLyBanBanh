@@ -22,8 +22,13 @@ namespace QuanLyBanBanh.Controls
 
         public static DataTable layDanhSach()
         {
-            string query = "select MaKM, TenKM from KhuyenMai ";
+            string query = "select MaKM, TenKM, GiaTri, LoaiKM from KhuyenMai ";
             return DataProvider.Instance.ExecuteQuery(query);
+        }
+        public static DataTable layThongTin(int id)
+        {
+            string query = "select MaKM, TenKM, GiaTri, LoaiKM from KhuyenMai where MaKM = @ma";
+            return DataProvider.Instance.ExecuteQuery(query, new object[] { id});
         }
         public static double layGiaTri(string ten)
         {

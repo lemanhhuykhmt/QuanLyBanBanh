@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyBanBanh.Controls;
 using QuanLyBanBanh.GUI.NhapLieu;
+using QuanLyBanBanh.GUI.Sua;
 
 namespace QuanLyBanBanh.GUI.UC
 {
@@ -78,9 +79,9 @@ namespace QuanLyBanBanh.GUI.UC
             int id = Convert.ToInt32(dgvDanhSach.Rows[e.RowIndex].Cells["colMa"].Value.ToString());
             if (e.ColumnIndex == dgvDanhSach.Columns["colSua"].Index)
             {
-                //frmSuaGV f = new frmSuaGV(id);
-                //f.ShowDialog();
-                //loadDuLieu();
+                frmSuaNV f = new frmSuaNV(id);
+                f.ShowDialog();
+                loadDuLieu();
             }
             else if (e.ColumnIndex == dgvDanhSach.Columns["colXoa"].Index)
             {

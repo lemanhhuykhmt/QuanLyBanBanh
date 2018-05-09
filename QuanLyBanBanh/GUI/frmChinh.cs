@@ -10,11 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using QuanLyBanBanh.GUI.UC;
+using QuanLyBanBanh.GUI.Sua;
 
 namespace QuanLyBanBanh.GUI
 {
     public partial class frmChinh : Form
     {
+        private string tenDangNhap;
         private int idNV;
         public delegate void delGuiThoat(bool thoatLuon);
         public delGuiThoat guiThoat;
@@ -23,10 +25,11 @@ namespace QuanLyBanBanh.GUI
         {
             InitializeComponent();
         }
-        public frmChinh(string tenDangNhap)
+        public frmChinh(string ten)
         {
             InitializeComponent();
-            lbChaoMung.Text = "Xin chào: " + tenDangNhap;
+            tenDangNhap = ten;
+            lbChaoMung.Text = "Xin chào: " + ten;
             // lấy id thông qua tenDangNhap
             idNV = (int) DataProvider.Instance.ExecuteScalar("select MaNV from Account where TenDangNhap = @tendangnhap", new object[] { tenDangNhap });
         }
@@ -97,12 +100,30 @@ namespace QuanLyBanBanh.GUI
             }
         }
 
-        private void mnuAdminQuanLyNV_Click(object sender, EventArgs e)
+        private void mnuAdmin_QuanLyNV_Click(object sender, EventArgs e)
         {
             frmAdmin f = new frmAdmin();
             this.Hide();
             f.ShowDialog();
             this.Show();
+        }
+
+        private void mnuDangXuat_Click(object sender, EventArgs e)
+        {
+            dangXuat = true;
+            this.Close();
+        }
+
+        private void mnuTaiKhoan_ThongTin_Click(object sender, EventArgs e)
+        {
+            frmThongTinCaNhan frm = new frmThongTinCaNhan(idNV);
+            frm.ShowDialog();
+        }
+
+        private void mnuTaiKhoan_DoiMK_Click(object sender, EventArgs e)
+        {
+            frmDoiMK frm = new frmDoiMK(tenDangNhap);
+            frm.ShowDialog();
         }
     }
 }

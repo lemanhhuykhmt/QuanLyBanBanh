@@ -63,7 +63,7 @@ namespace QuanLyBanBanh.GUI
                 if(kiemTraDangNhap == 1)
                 {
                     str = "Độ dài tên đăng nhập chuỗi không hợp lệ";
-                    lbDangNhap.Text = "Vui lòng sử dụng từ 6 đến 30 ký tự";
+                    lbDangNhap.Text = "Vui lòng sử dụng từ 3 đến 30 ký tự";
                 }
                 else if(kiemTraDangNhap == 2)
                 {
@@ -73,7 +73,7 @@ namespace QuanLyBanBanh.GUI
                 else if (kiemTraMatKhau == 1)
                 {
                     str = "Độ dài mật khẩu kí tự không hợp lệ";
-                    lbMatKhau.Text = "Vui lòng sử dụng từ 6 đến 30 ký tự";
+                    lbMatKhau.Text = "Vui lòng sử dụng từ 3 đến 30 ký tự";
                 }
                 else if (kiemTraMatKhau == 2)
                 {

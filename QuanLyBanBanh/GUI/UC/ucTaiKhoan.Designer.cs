@@ -30,15 +30,12 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.btnXoa = new System.Windows.Forms.Button();
             this.btnNhap = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.colCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colQuyen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colSua = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colXoa = new System.Windows.Forms.DataGridViewButtonColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSach)).BeginInit();
@@ -47,7 +44,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.txtTimKiem);
-            this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnNhap);
             this.panel1.Controls.Add(this.btnTimKiem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -63,15 +59,6 @@
             this.txtTimKiem.Size = new System.Drawing.Size(198, 22);
             this.txtTimKiem.TabIndex = 5;
             // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(813, 23);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 0;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            // 
             // btnNhap
             // 
             this.btnNhap.Location = new System.Drawing.Point(719, 22);
@@ -80,6 +67,7 @@
             this.btnNhap.TabIndex = 0;
             this.btnNhap.Text = "Thêm khách hàng";
             this.btnNhap.UseVisualStyleBackColor = true;
+            this.btnNhap.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnTimKiem
             // 
@@ -95,11 +83,9 @@
             this.dgvDanhSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDanhSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDanhSach.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colCheck,
             this.colTen,
             this.colNV,
             this.colQuyen,
-            this.colSua,
             this.colXoa});
             this.dgvDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDanhSach.Location = new System.Drawing.Point(0, 58);
@@ -108,12 +94,7 @@
             this.dgvDanhSach.RowTemplate.Height = 24;
             this.dgvDanhSach.Size = new System.Drawing.Size(962, 533);
             this.dgvDanhSach.TabIndex = 9;
-            // 
-            // colCheck
-            // 
-            this.colCheck.FillWeight = 20F;
-            this.colCheck.HeaderText = "";
-            this.colCheck.Name = "colCheck";
+            this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
             // 
             // colTen
             // 
@@ -131,14 +112,6 @@
             this.colQuyen.FillWeight = 80F;
             this.colQuyen.HeaderText = "Quyền Hạn";
             this.colQuyen.Name = "colQuyen";
-            // 
-            // colSua
-            // 
-            this.colSua.FillWeight = 15F;
-            this.colSua.HeaderText = "";
-            this.colSua.Name = "colSua";
-            this.colSua.Text = "i";
-            this.colSua.UseColumnTextForButtonValue = true;
             // 
             // colXoa
             // 
@@ -167,15 +140,12 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtTimKiem;
-        private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnNhap;
         private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.DataGridView dgvDanhSach;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn colCheck;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTen;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNV;
         private System.Windows.Forms.DataGridViewTextBoxColumn colQuyen;
-        private System.Windows.Forms.DataGridViewButtonColumn colSua;
         private System.Windows.Forms.DataGridViewButtonColumn colXoa;
     }
 }
