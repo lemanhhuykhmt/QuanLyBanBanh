@@ -34,7 +34,7 @@ namespace QuanLyBanBanh.GUI.UC
             DataTable dt = HoaDonBanControl.layDanhSach();
             for(int i = 0; i < dt.Rows.Count; ++i)
             {
-                int idTrangThai = Convert.ToInt32(dt.Rows[i][4].ToString());
+                int idTrangThai = Convert.ToInt32(dt.Rows[i]["TrangThai"].ToString());
                 string tenTrangThai = "";
                 if(idTrangThai == 1)
                 {
@@ -52,7 +52,7 @@ namespace QuanLyBanBanh.GUI.UC
                 {
                     tenTrangThai = "Hoàn trả";
                 }
-                dgvDanhSach.Rows.Add(new object[] {false, dt.Rows[i][0], dt.Rows[i][1], dt.Rows[i][2], dt.Rows[i][3], tenTrangThai});
+                dgvDanhSach.Rows.Add(new object[] {false, dt.Rows[i][0], dt.Rows[i]["TenKH"], dt.Rows[i]["TenNV"], dt.Rows[i]["NgayLap"], tenTrangThai});
             }
         }
 

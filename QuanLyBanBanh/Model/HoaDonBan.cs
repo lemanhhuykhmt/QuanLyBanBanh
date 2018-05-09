@@ -26,7 +26,7 @@ namespace QuanLyBanBanh.Model
         }
         public int Id
         {
-            set { }
+            set { id = value; }
             get { return id; }
         }
         public DateTime NgayLap
@@ -77,10 +77,10 @@ namespace QuanLyBanBanh.Model
             chiTiet = new ChiTietHDB(id);
             this.id = id;
             DataTable dt = HoaDonBanControl.layThongTinHDB(id);
-            idKH = Convert.ToInt32(dt.Rows[0]["MaKH"].ToString());
-            idNV = Convert.ToInt32(dt.Rows[0]["MaNV"].ToString());
+            idKH = dt.Rows[0]["MaKH"].ToString().Length == 0 ? 0 : Convert.ToInt32(dt.Rows[0]["MaKH"].ToString());
+            idNV = dt.Rows[0]["MaNV"].ToString().Length == 0 ? 0 : Convert.ToInt32(dt.Rows[0]["MaNV"].ToString());
             trangThai = Convert.ToInt32(dt.Rows[0]["TrangThai"].ToString());
-            khuyenMai = new KhuyenMai(Convert.ToInt32(dt.Rows[0]["MaKM"].ToString()));
+            khuyenMai = new KhuyenMai(dt.Rows[0]["MaKM"].ToString().Length == 0 ? 0 : Convert.ToInt32(dt.Rows[0]["MaKM"].ToString()));
             thanhToan = double.Parse(dt.Rows[0]["ThanhToan"].ToString());
             ngayLap = DateTime.Parse(dt.Rows[0]["NgayLap"].ToString());
         }
