@@ -30,17 +30,40 @@ namespace QuanLyBanBanh.GUI.UC
                 if (Convert.ToInt32(dt.Rows[i][2].ToString()) == 1) tenQuyen = "Admin";
                 else if (Convert.ToInt32(dt.Rows[i][2].ToString()) == 2) tenQuyen = "Bán Hàng";
                 else if (Convert.ToInt32(dt.Rows[i][2].ToString()) == 3) tenQuyen = "Nhập Kho";
-                dgvDanhSach.Rows.Add(new object[] { false, dt.Rows[i][0], dt.Rows[i][1], tenQuyen });
+                dgvDanhSach.Rows.Add(new object[] { dt.Rows[i][0], dt.Rows[i][1], tenQuyen });
+            }
+        }
+        private void dgvDanhSach_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDanhSach.Rows.Count == e.RowIndex + 1) return;
+
+            string tendangnhap = dgvDanhSach.Rows[e.RowIndex].Cells["colTen"].Value.ToString();
+            //if (e.ColumnIndex == dgvDanhSach.Columns["colSua"].Index)
+            //{
+            //    //frmSuaKH f = new frmSuaKH(id);
+            //    //f.ShowDialog();
+            //    //loadDuLieu();
+            //}
+            if (e.ColumnIndex == dgvDanhSach.Columns["colXoa"].Index)
+            {
+                int ketQua = AccountControl.xoaThongTin(tendangnhap);
+                if (ketQua <= 0)
+                {
+                    MessageBox.Show("Thực hiện thất bại");
+                }
+                else
+                {
+                    loadDuLieu();
+                }
             }
         }
 
 
-
         private void btnThem_Click(object sender, EventArgs e)
         {
-            //frmThemNV f = new frmThemNV();
-            //f.ShowDialog();
-            //loadDuLieu();
+            frmThemAccount f = new frmThemAccount();
+            f.ShowDialog();
+            loadDuLieu();
         }
     }
 }

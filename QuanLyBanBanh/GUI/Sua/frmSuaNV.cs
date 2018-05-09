@@ -52,7 +52,7 @@ namespace QuanLyBanBanh.GUI.Sua
             if (kiemTra(ten, gioitinh, ngaysinh, sdt, luong))
             {
                 int ketQua = 0;
-                ketQua = NhanVienControl.suaThongTin(id, ten, ngaysinh, sdt, gioitinh, luong);
+                ketQua = NhanVienControl.suaThongTin(id, ten, gioitinh, ngaysinh, sdt, luong);
                 if (ketQua > 0)
                 {
                     MessageBox.Show("thay đổi thành công");
@@ -70,15 +70,16 @@ namespace QuanLyBanBanh.GUI.Sua
             this.Close();
         }
 
-        private void frmSuaGV_Load(object sender, EventArgs e)
-        {
-            ckbNgaySinh.Checked = false;
-            dtpNgaySinhMoi.Enabled = false;
-        }
 
         private void ckbNgaySinh_CheckedChanged(object sender, EventArgs e)
         {
             dtpNgaySinhMoi.Enabled = ckbNgaySinh.Checked;
+        }
+
+        private void frmSuaNV_Load(object sender, EventArgs e)
+        {
+            ckbNgaySinh.Checked = false;
+            dtpNgaySinhMoi.Enabled = false;
         }
     }
 }

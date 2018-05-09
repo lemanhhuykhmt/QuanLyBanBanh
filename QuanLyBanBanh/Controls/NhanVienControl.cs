@@ -39,15 +39,15 @@ namespace QuanLyBanBanh.Controls
         }
         public static DataTable layThongTin(int id) // lấy thông tin khách hàng có id là ..
         {
-            string query = "select * from GiaoVien where MaGV = @ma";//lấy ra thông tin khách hàng có mã
+            string query = "select * from NhanVien where MaNV = @ma";//lấy ra thông tin khách hàng có mã
             DataTable dt = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
             return dt;
         }
-        public static int suaThongTin(int id, string ten, string ngaysinh, string sdt, string gioitinh, double luong) // sửa thông tin của khách hàng
+        public static int suaThongTin(int id, string ten, string gioitinh, string ngaysinh, string sdt, double luong) // sửa thông tin của khách hàng
         {
-            string query = "exec suagv @id , @ten , @ngaysinh , @sdt , @gioitinh , @luong";
-            if (luong == 0) return DataProvider.Instance.ExecuteNonQuery(query, new object[] { id, ten, ngaysinh, sdt, gioitinh, "" });
-            return DataProvider.Instance.ExecuteNonQuery(query, new object[] { id, ten, ngaysinh, sdt, gioitinh, luong });
+            string query = "exec suanv @id , @ten , @gioitinh , @ngaysinh , @sdt  , @luong";
+            if (luong == 0) return DataProvider.Instance.ExecuteNonQuery(query, new object[] { id, ten, gioitinh, ngaysinh, sdt, "" });
+            return DataProvider.Instance.ExecuteNonQuery(query, new object[] { id, ten, gioitinh, ngaysinh, sdt, luong });
         }
         public static int xoaThongTin(int id)
         {

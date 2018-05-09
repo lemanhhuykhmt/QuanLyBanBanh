@@ -85,11 +85,12 @@
             this.ckbNgaySinh.Size = new System.Drawing.Size(18, 17);
             this.ckbNgaySinh.TabIndex = 16;
             this.ckbNgaySinh.UseVisualStyleBackColor = true;
+            this.ckbNgaySinh.CheckedChanged += new System.EventHandler(this.ckbNgaySinh_CheckedChanged);
             // 
             // dtpNgaySinhMoi
             // 
             this.dtpNgaySinhMoi.CustomFormat = "dd/MM/yyyy";
-            this.dtpNgaySinhMoi.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNgaySinhMoi.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpNgaySinhMoi.Location = new System.Drawing.Point(101, 162);
             this.dtpNgaySinhMoi.Name = "dtpNgaySinhMoi";
             this.dtpNgaySinhMoi.Size = new System.Drawing.Size(227, 22);
@@ -189,6 +190,7 @@
             this.btnXacNhan.TabIndex = 21;
             this.btnXacNhan.Text = "Xác Nhận";
             this.btnXacNhan.UseVisualStyleBackColor = true;
+            this.btnXacNhan.Click += new System.EventHandler(this.btnXacNhan_Click);
             // 
             // groupBox1
             // 
@@ -305,6 +307,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmSuaNV";
             this.Text = "frmSuaNV";
+            this.Load += new System.EventHandler(this.frmSuaNV_Load);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);

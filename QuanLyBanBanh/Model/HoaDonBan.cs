@@ -16,7 +16,7 @@ namespace QuanLyBanBanh.Model
         private int idNV;
         private int idKH;
         private int trangThai;
-        private string tenKM;
+        private KhuyenMai khuyenMai;
         private double thanhToan;
 
         public ChiTietHDB ChiTiet
@@ -26,7 +26,7 @@ namespace QuanLyBanBanh.Model
         }
         public int Id
         {
-            set { }
+            set { id = value; }
             get { return id; }
         }
         public DateTime NgayLap
@@ -44,10 +44,10 @@ namespace QuanLyBanBanh.Model
             set { idKH = value; }
             get { return idKH; }
         }
-        public string TenKM
+        public KhuyenMai KhuyenMai
         {
-            set { tenKM = value; }
-            get { return tenKM; }
+            set { khuyenMai = value; }
+            get { return khuyenMai; }
         }
         public double ThanhToan
         {
@@ -68,7 +68,7 @@ namespace QuanLyBanBanh.Model
             ngayLap = DateTime.Now;
             idNV = 0;
             idKH = 0;
-            tenKM = "-----none-----";
+            khuyenMai = new KhuyenMai(0);
             thanhToan = 0;
             trangThai = 0;
         }
@@ -76,12 +76,13 @@ namespace QuanLyBanBanh.Model
         {
             chiTiet = new ChiTietHDB(id);
             this.id = id;
-            idKH = HoaDonBanControl.layIDKhachHang(id);
-            idNV = HoaDonBanControl.layIDNhanVien(id);
-            trangThai = HoaDonBanControl.layTrangThai(id);
-            tenKM = HoaDonBanControl.layKhuyenMai(id);
-            thanhToan = HoaDonBanControl.layThanhToan(id);
-            ngayLap = HoaDonBanControl.layNgayLap(id);
+            DataTable dt = HoaDonBanControl.layThongTinHDB(id);
+            idKH = dt.Rows[0]["MaKH"].ToString().Length == 0 ? 0 : Convert.ToInt32(dt.Rows[0]["MaKH"].ToString());
+            idNV = dt.Rows[0]["MaNV"].ToString().Length == 0 ? 0 : Convert.ToInt32(dt.Rows[0]["MaNV"].ToString());
+            trangThai = Convert.ToInt32(dt.Rows[0]["TrangThai"].ToString());
+            khuyenMai = new KhuyenMai(dt.Rows[0]["MaKM"].ToString().Length == 0 ? 0 : Convert.ToInt32(dt.Rows[0]["MaKM"].ToString()));
+            thanhToan = double.Parse(dt.Rows[0]["ThanhToan"].ToString());
+            ngayLap = DateTime.Parse(dt.Rows[0]["NgayLap"].ToString());
         }
 
         public void Luu()
@@ -91,8 +92,8 @@ namespace QuanLyBanBanh.Model
 
         public void tinhThanhToan()
         {
-            int loaiKM = KhuyenMaiControl.layLoaiKhuyenMai(tenKM);
-            double giaTri = KhuyenMaiControl.layGiaTri(tenKM);
+            int loaiKM = khuyenMai.LoaiKM;
+            double giaTri = khuyenMai.GiaTri;
 
             if(loaiKM == 0)
             {

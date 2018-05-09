@@ -85,6 +85,18 @@
     <Compile Include="GUI\frmDangNhap.Designer.cs">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\frmThongTinCaNhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\frmThongTinCaNhan.Designer.cs">
+      <DependentUpon>frmThongTinCaNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhapLieu\frmThemAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhapLieu\frmThemAccount.Designer.cs">
+      <DependentUpon>frmThemAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\NhapLieu\frmThemHDB.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +126,12 @@
     </Compile>
     <Compile Include="GUI\NhapLieu\frmThemSP.Designer.cs">
       <DependentUpon>frmThemSP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\Sua\frmDoiMK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\Sua\frmDoiMK.Designer.cs">
+      <DependentUpon>frmDoiMK.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\Sua\frmSuaKH.cs">
       <SubType>Form</SubType>
@@ -177,8 +195,10 @@
     </Compile>
     <Compile Include="Model\ChiTietHDB.cs" />
     <Compile Include="Model\HoaDonBan.cs" />
+    <Compile Include="Model\KhuyenMai.cs" />
     <Compile Include="Model\LoaiSP.cs" />
     <Compile Include="Model\MatHang.cs" />
+    <Compile Include="Model\NhanVien.cs" />
     <Compile Include="Model\SanPham.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -197,6 +217,12 @@
     <EmbeddedResource Include="GUI\frmDangNhap.resx">
       <DependentUpon>frmDangNhap.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\frmThongTinCaNhan.resx">
+      <DependentUpon>frmThongTinCaNhan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhapLieu\frmThemAccount.resx">
+      <DependentUpon>frmThemAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhapLieu\frmThemHDB.resx">
       <DependentUpon>frmThemHDB.cs</DependentUpon>
     </EmbeddedResource>
@@ -208,6 +234,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhapLieu\frmThemNV.resx">
       <DependentUpon>frmThemNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\Sua\frmDoiMK.resx">
+      <DependentUpon>frmDoiMK.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Sua\frmSuaKH.resx">
       <DependentUpon>frmSuaKH.cs</DependentUpon>
@@ -241,18 +270,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -262,9 +291,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <None Include="Resources\diagram.png" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
