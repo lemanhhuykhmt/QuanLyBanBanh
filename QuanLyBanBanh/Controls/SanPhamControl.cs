@@ -12,21 +12,23 @@ namespace QuanLyBanBanh.Controls
         private static SanPhamControl instance;
         public SanPhamControl Instance
         {
-            private set { if (instance == null) instance = new SanPhamControl(); instance = value; }
-            get { return instance; }
+            private set {  instance = value; }
+            get { if (instance == null) instance = new SanPhamControl(); return instance; }
         }
         private SanPhamControl()
         {
 
         }
-        public static int themDuLieu(string ten, int loai, float dongia, string donvido, DateTime hsd, DateTime nsx, int soluong)
+        public static int themDuLieu(string ten, int loai, double dongia, string donvido, string hsd, string nsx, int soluong)
         {
             string query = "exec themsp @tensp , @loaisp , @dongia , @donvido , @hsd , @nsx , @soluong";
             return DataProvider.Instance.ExecuteNonQuery(query, new object[] { ten, loai, dongia, donvido, hsd, nsx, soluong});
         }
         public static DataTable layDanhSach() // lấy danh sách sản phẩm
         {
-            string query = "select MaSP, TenSP, TenLoaiSP, DonGia, DonViDo, HSD, NSX, SoLuong from SanPham as sp, LoaiSP as loai where ConDung = 1 and sp.MaLoaiSP = loai.MaLoaiSP";//lấy ra thông tin khách hàng có mã
+            string query = "select sp.MaSP, sp.TenSP, loai.TenLoaiSP, sp.DonGia, " 
+                + "sp.DonViDo, sp.HSD, sp.NSX, sp.SoLuong from SanPham as sp left " 
+                + "join LoaiSP as loai on sp.MaLoaiSP = loai.MaLoaiSP";
             DataTable dt = DataProvider.Instance.ExecuteQuery(query);
             return dt;
         }

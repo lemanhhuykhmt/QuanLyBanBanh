@@ -70,6 +70,7 @@
             this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colXoa = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnIn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDanhSachSP)).BeginInit();
@@ -107,7 +108,7 @@
             // 
             // lbTenKH
             // 
-            this.lbTenKH.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTenKH.Font = new System.Drawing.Font("Times New Roman", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbTenKH.Location = new System.Drawing.Point(658, 14);
             this.lbTenKH.Name = "lbTenKH";
             this.lbTenKH.Size = new System.Drawing.Size(202, 27);
@@ -116,11 +117,10 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(534, 14);
+            this.label1.Location = new System.Drawing.Point(514, 14);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(135, 19);
+            this.label1.Size = new System.Drawing.Size(155, 19);
             this.label1.TabIndex = 2;
             this.label1.Text = "Tên Khách Hàng:";
             // 
@@ -218,6 +218,7 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.btnIn);
             this.panel3.Controls.Add(this.btnThoat);
             this.panel3.Controls.Add(this.btnLuu);
             this.panel3.Controls.Add(this.panel4);
@@ -230,7 +231,7 @@
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(344, 563);
+            this.btnThoat.Location = new System.Drawing.Point(445, 563);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(144, 44);
             this.btnThoat.TabIndex = 2;
@@ -240,7 +241,7 @@
             // btnLuu
             // 
             this.btnLuu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLuu.Location = new System.Drawing.Point(140, 563);
+            this.btnLuu.Location = new System.Drawing.Point(241, 563);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(144, 44);
             this.btnLuu.TabIndex = 2;
@@ -494,6 +495,17 @@
             this.colXoa.Text = "x";
             this.colXoa.UseColumnTextForButtonValue = true;
             // 
+            // btnIn
+            // 
+            this.btnIn.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIn.Location = new System.Drawing.Point(13, 563);
+            this.btnIn.Name = "btnIn";
+            this.btnIn.Size = new System.Drawing.Size(144, 44);
+            this.btnIn.TabIndex = 3;
+            this.btnIn.Text = "Lưu và In";
+            this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
+            // 
             // frmThemHDB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -565,5 +577,6 @@
         private System.Windows.Forms.Panel panel10;
         private System.Windows.Forms.Label lbNgayLap;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnIn;
     }
 }

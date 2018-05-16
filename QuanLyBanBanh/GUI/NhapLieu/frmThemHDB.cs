@@ -1,5 +1,6 @@
 ﻿using QuanLyBanBanh.Controls;
 using QuanLyBanBanh.GUI.Chon;
+using QuanLyBanBanh.GUI.In;
 using QuanLyBanBanh.Model;
 using System;
 using System.Collections.Generic;
@@ -82,7 +83,11 @@ namespace QuanLyBanBanh.GUI.NhapLieu
             dgvChiTiet.AutoGenerateColumns = false;
             for(int i = 0; i < HDB.ChiTiet.ListSanPham.Count; ++i)
             {
-                dgvChiTiet.Rows.Add(new object[] { HDB.ChiTiet.ListSanPham[i].TenSP, HDB.ChiTiet.ListSanPham[i].SoLuong, HDB.ChiTiet.ListSanPham[i].DonGia, HDB.ChiTiet.ListSanPham[i].DonGia * HDB.ChiTiet.ListSanPham[i].SoLuong });
+                dgvChiTiet.Rows.Add(new object[] {
+                    HDB.ChiTiet.ListSanPham[i].TenSP,
+                    HDB.ChiTiet.ListSanPham[i].SoLuong,
+                    HDB.ChiTiet.ListSanPham[i].DonGia,
+                    HDB.ChiTiet.ListSanPham[i].DonGia * HDB.ChiTiet.ListSanPham[i].SoLuong });
                 dgvChiTiet.Rows[dgvChiTiet.Rows.Count - 2].Tag = HDB.ChiTiet.ListSanPham[i].IdSP;
                 //dgvChiTiet.Rows.Add()
             }
@@ -145,9 +150,11 @@ namespace QuanLyBanBanh.GUI.NhapLieu
         }
         private void loadKhuyenMai()
         {
-            if(HDB.KhuyenMai.TenKM.Length > 0)
+            DataTable dt = HoaDonBanControl.layThongTinHDB(HDB.Id);
+            HDB.KhuyenMai = new KhuyenMai(dt.Rows[0]["MaKM"].ToString().Length == 0 ? 0 : Convert.ToInt32(dt.Rows[0]["MaKM"].ToString()));
+            if (HDB.KhuyenMai.TenKM.Length > 0)
             {
-                cbKhuyenMai.SelectedItem = HDB.KhuyenMai.TenKM;
+                cbKhuyenMai.Text = HDB.KhuyenMai.TenKM;
                 return;
             }
             cbKhuyenMai.SelectedItem = "-----none-----";
@@ -178,7 +185,7 @@ namespace QuanLyBanBanh.GUI.NhapLieu
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
-        {
+        { // còn thiếu lưu các thông tin khác
             if(HDB.Id == 0) // neu la hd moi
             {
                 int ketqua = HoaDonBanControl.themDuLieu(HDB.IdKH, HDB.IdNV, HDB.NgayLap, HDB.KhuyenMai.MaKM, HDB.TrangThai, HDB.ThanhToan);
@@ -198,10 +205,13 @@ namespace QuanLyBanBanh.GUI.NhapLieu
                 {
                     MessageBox.Show("them thanh cong");
                     this.Close();
-              }
+                }
             }
             else // neu hd cu
             {
+                //sua
+                HoaDonBanControl.suaThongTin(HDB.Id, HDB.IdKH, HDB.IdNV, HDB.KhuyenMai.MaKM, HDB.TrangThai, HDB.ThanhToan);
+
                 // xoa het chitiet cu
                 HoaDonBanControl.xoaChiTietHDB(HDB.Id);
                 //
@@ -321,7 +331,7 @@ namespace QuanLyBanBanh.GUI.NhapLieu
 
         private void cbTrangThai_SelectedIndexChanged(object sender, EventArgs e)
         {
-            HDB.TrangThai = cbKhuyenMai.SelectedIndex + 1;
+            HDB.TrangThai = cbTrangThai.SelectedIndex + 1;
         }
 
         private void dgvChiTiet_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
@@ -331,5 +341,52 @@ namespace QuanLyBanBanh.GUI.NhapLieu
                 e.Cancel = true;
             }
         }
+
+        private void btnIn_Click(object sender, EventArgs e)
+        {
+            if (HDB.Id == 0) // neu la hd moi
+            {
+                int ketqua = HoaDonBanControl.themDuLieu(HDB.IdKH, HDB.IdNV, HDB.NgayLap, HDB.KhuyenMai.MaKM, HDB.TrangThai, HDB.ThanhToan);
+                if (ketqua <= 0)
+                {
+                    return;
+                } //
+                ketqua = 0;
+                // lay ma hoa don vua nhap
+                HDB.Id = HoaDonBanControl.layMaHDBMoi();
+                if (HDB.Id == 0) return;
+                for (int i = 0; i < HDB.ChiTiet.ListSanPham.Count; ++i)
+                {
+                    ketqua += HoaDonBanControl.themChiTietHDB(HDB.Id, HDB.ChiTiet.ListSanPham[i].IdSP, HDB.ChiTiet.ListSanPham[i].SoLuong, HDB.ChiTiet.ListSanPham[i].DonGia);
+                }
+                if (ketqua > 0)
+                {
+                    MessageBox.Show("them thanh cong");
+                    this.Close();
+                }
+            }
+            else // neu hd cu
+            {
+                //sua
+                HoaDonBanControl.suaThongTin(HDB.Id, HDB.IdKH, HDB.IdNV, HDB.KhuyenMai.MaKM, HDB.TrangThai, HDB.ThanhToan);
+
+                // xoa het chitiet cu
+                HoaDonBanControl.xoaChiTietHDB(HDB.Id);
+                //
+                int ketqua = 0;
+                for (int i = 0; i < HDB.ChiTiet.ListSanPham.Count; ++i)
+                {
+                    ketqua += HoaDonBanControl.themChiTietHDB(HDB.Id, HDB.ChiTiet.ListSanPham[i].IdSP, HDB.ChiTiet.ListSanPham[i].SoLuong, HDB.ChiTiet.ListSanPham[i].DonGia);
+                }
+                if (ketqua > 0)
+                {
+                    MessageBox.Show("sua thanh cong");
+                    this.Close();
+                }
+            }
+            ///////////////////////////
+            //frmInHoaDonBan f = new frmInHoaDonBan(HDB.Id);
+           // f.ShowDialog();
+        } 
     }
 }

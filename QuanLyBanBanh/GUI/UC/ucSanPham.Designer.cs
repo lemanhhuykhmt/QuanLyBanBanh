@@ -33,11 +33,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dgvDanhSach = new System.Windows.Forms.DataGridView();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.btnXoa = new System.Windows.Forms.Button();
-            this.btnNhap = new System.Windows.Forms.Button();
-            this.btnTimKiem = new System.Windows.Forms.Button();
             this.colCheck = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colMa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +44,13 @@
             this.colSoLuong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSua = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colXoa = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.btnXoa = new System.Windows.Forms.Button();
+            this.btnNhap = new System.Windows.Forms.Button();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.btnThemLoai = new System.Windows.Forms.Button();
+            this.btnXoaLoai = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -59,8 +61,11 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.panel1.Controls.Add(this.btnXoaLoai);
+            this.panel1.Controls.Add(this.btnThemLoai);
             this.panel1.Controls.Add(this.tvLoaiSP);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(313, 677);
@@ -121,54 +126,6 @@
             this.dgvDanhSach.Size = new System.Drawing.Size(902, 568);
             this.dgvDanhSach.TabIndex = 0;
             this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.txtTimKiem);
-            this.panel3.Controls.Add(this.btnXoa);
-            this.panel3.Controls.Add(this.btnNhap);
-            this.panel3.Controls.Add(this.btnTimKiem);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(0, 0);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(902, 72);
-            this.panel3.TabIndex = 12;
-            // 
-            // txtTimKiem
-            // 
-            this.txtTimKiem.Location = new System.Drawing.Point(16, 28);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(198, 22);
-            this.txtTimKiem.TabIndex = 10;
-            this.txtTimKiem.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtTimKiem_PreviewKeyDown);
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Location = new System.Drawing.Point(719, 27);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(75, 23);
-            this.btnXoa.TabIndex = 7;
-            this.btnXoa.Text = "Xóa";
-            this.btnXoa.UseVisualStyleBackColor = true;
-            // 
-            // btnNhap
-            // 
-            this.btnNhap.Location = new System.Drawing.Point(625, 26);
-            this.btnNhap.Name = "btnNhap";
-            this.btnNhap.Size = new System.Drawing.Size(75, 23);
-            this.btnNhap.TabIndex = 8;
-            this.btnNhap.Text = "Thêm khách hàng";
-            this.btnNhap.UseVisualStyleBackColor = true;
-            // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Location = new System.Drawing.Point(220, 28);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(97, 23);
-            this.btnTimKiem.TabIndex = 11;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // colCheck
             // 
@@ -239,6 +196,75 @@
             this.colXoa.Text = "x";
             this.colXoa.UseColumnTextForButtonValue = true;
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.txtTimKiem);
+            this.panel3.Controls.Add(this.btnXoa);
+            this.panel3.Controls.Add(this.btnNhap);
+            this.panel3.Controls.Add(this.btnTimKiem);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(902, 72);
+            this.panel3.TabIndex = 12;
+            // 
+            // txtTimKiem
+            // 
+            this.txtTimKiem.Location = new System.Drawing.Point(16, 28);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(198, 22);
+            this.txtTimKiem.TabIndex = 10;
+            this.txtTimKiem.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.txtTimKiem_PreviewKeyDown);
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Location = new System.Drawing.Point(719, 27);
+            this.btnXoa.Name = "btnXoa";
+            this.btnXoa.Size = new System.Drawing.Size(75, 23);
+            this.btnXoa.TabIndex = 7;
+            this.btnXoa.Text = "Xóa";
+            this.btnXoa.UseVisualStyleBackColor = true;
+            // 
+            // btnNhap
+            // 
+            this.btnNhap.Location = new System.Drawing.Point(625, 26);
+            this.btnNhap.Name = "btnNhap";
+            this.btnNhap.Size = new System.Drawing.Size(75, 23);
+            this.btnNhap.TabIndex = 8;
+            this.btnNhap.Text = "Thêm khách hàng";
+            this.btnNhap.UseVisualStyleBackColor = true;
+            this.btnNhap.Click += new System.EventHandler(this.btnNhap_Click);
+            // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.Location = new System.Drawing.Point(220, 28);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(97, 23);
+            this.btnTimKiem.TabIndex = 11;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // btnThemLoai
+            // 
+            this.btnThemLoai.Location = new System.Drawing.Point(61, 3);
+            this.btnThemLoai.Name = "btnThemLoai";
+            this.btnThemLoai.Size = new System.Drawing.Size(30, 32);
+            this.btnThemLoai.TabIndex = 1;
+            this.btnThemLoai.Text = "+";
+            this.btnThemLoai.UseVisualStyleBackColor = true;
+            this.btnThemLoai.Click += new System.EventHandler(this.btnThemLoai_Click);
+            // 
+            // btnXoaLoai
+            // 
+            this.btnXoaLoai.Location = new System.Drawing.Point(124, 3);
+            this.btnXoaLoai.Name = "btnXoaLoai";
+            this.btnXoaLoai.Size = new System.Drawing.Size(30, 32);
+            this.btnXoaLoai.TabIndex = 2;
+            this.btnXoaLoai.Text = "-";
+            this.btnXoaLoai.UseVisualStyleBackColor = true;
+            this.btnXoaLoai.Click += new System.EventHandler(this.btnXoaLoai_Click);
+            // 
             // ucSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -280,5 +306,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colSoLuong;
         private System.Windows.Forms.DataGridViewButtonColumn colSua;
         private System.Windows.Forms.DataGridViewButtonColumn colXoa;
+        private System.Windows.Forms.Button btnThemLoai;
+        private System.Windows.Forms.Button btnXoaLoai;
     }
 }

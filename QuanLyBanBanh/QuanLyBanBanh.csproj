@@ -32,6 +32,25 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.Design, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.140.1000.523\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Messaging" />
@@ -52,14 +71,18 @@
     <Compile Include="Controls\KhachHangControl.cs" />
     <Compile Include="Controls\KhuyenMaiControl.cs" />
     <Compile Include="Controls\LoaiSPControl.cs" />
+    <Compile Include="Controls\MatHangControl.cs" />
     <Compile Include="Controls\NhaCungCapControl.cs" />
     <Compile Include="Controls\NhanVienControl.cs" />
     <Compile Include="Controls\SanPhamControl.cs" />
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
+    <Compile Include="Controls\ThongKeControl.cs" />
+    <Compile Include="DataSet\dsThongKe.cs">
+      <DependentUpon>dsThongKe.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="DataSet\dsThongKe.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsThongKe.xsd</DependentUpon>
     </Compile>
     <Compile Include="GUI\Chon\frmChonKH.cs">
       <SubType>Form</SubType>
@@ -91,6 +114,12 @@
     <Compile Include="GUI\frmThongTinCaNhan.Designer.cs">
       <DependentUpon>frmThongTinCaNhan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\In\frmInThongKe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\In\frmInThongKe.Designer.cs">
+      <DependentUpon>frmInThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="GUI\NhapLieu\frmThemAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +137,12 @@
     </Compile>
     <Compile Include="GUI\NhapLieu\frmThemKhachHang.Designer.cs">
       <DependentUpon>frmThemKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\NhapLieu\frmThemLoaiSP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\NhapLieu\frmThemLoaiSP.Designer.cs">
+      <DependentUpon>frmThemLoaiSP.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\NhapLieu\frmThemNCC.cs">
       <SubType>Form</SubType>
@@ -193,6 +228,12 @@
     <Compile Include="GUI\UC\ucTaiKhoan.Designer.cs">
       <DependentUpon>ucTaiKhoan.cs</DependentUpon>
     </Compile>
+    <Compile Include="GUI\UC\ucThongKe.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="GUI\UC\ucThongKe.Designer.cs">
+      <DependentUpon>ucThongKe.cs</DependentUpon>
+    </Compile>
     <Compile Include="Model\ChiTietHDB.cs" />
     <Compile Include="Model\HoaDonBan.cs" />
     <Compile Include="Model\KhuyenMai.cs" />
@@ -202,9 +243,6 @@
     <Compile Include="Model\SanPham.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="GUI\Chon\frmChonKH.resx">
       <DependentUpon>frmChonKH.cs</DependentUpon>
     </EmbeddedResource>
@@ -220,6 +258,9 @@
     <EmbeddedResource Include="GUI\frmThongTinCaNhan.resx">
       <DependentUpon>frmThongTinCaNhan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\In\frmInThongKe.resx">
+      <DependentUpon>frmInThongKe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhapLieu\frmThemAccount.resx">
       <DependentUpon>frmThemAccount.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,11 +270,17 @@
     <EmbeddedResource Include="GUI\NhapLieu\frmThemKhachHang.resx">
       <DependentUpon>frmThemKhachHang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhapLieu\frmThemLoaiSP.resx">
+      <DependentUpon>frmThemLoaiSP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhapLieu\frmThemNCC.resx">
       <DependentUpon>frmThemNCC.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\NhapLieu\frmThemNV.resx">
       <DependentUpon>frmThemNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GUI\NhapLieu\frmThemSP.resx">
+      <DependentUpon>frmThemSP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GUI\Sua\frmDoiMK.resx">
       <DependentUpon>frmDoiMK.cs</DependentUpon>
@@ -268,11 +315,27 @@
     <EmbeddedResource Include="GUI\UC\ucTaiKhoan.resx">
       <DependentUpon>ucTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\UC\ucThongKe.resx">
+      <DependentUpon>ucThongKe.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpInThongKe.rdlc" />
+    <None Include="DataSet\dsThongKe.xsc">
+      <DependentUpon>dsThongKe.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\dsThongKe.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsThongKe.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\dsThongKe.xss">
+      <DependentUpon>dsThongKe.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

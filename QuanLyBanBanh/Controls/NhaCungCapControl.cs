@@ -12,8 +12,8 @@ namespace QuanLyBanBanh.Controls
         private static NhaCungCapControl instance;
         public NhaCungCapControl Instance
         {
-            private set { if (instance == null) instance = new NhaCungCapControl(); instance = value; }
-            get { return instance; }
+            private set { instance = value; }
+            get { if (instance == null) instance = new NhaCungCapControl(); return instance; }
         }
         private NhaCungCapControl()
         {

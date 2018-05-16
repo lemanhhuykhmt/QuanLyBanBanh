@@ -12,8 +12,8 @@ namespace QuanLyBanBanh.Controls
         private static KhachHangControl instance;
         public KhachHangControl Instance
         {
-            private set { if (instance == null) instance = new KhachHangControl(); instance = value; }
-            get { return instance; }
+            private set {  instance = value; }
+            get { if (instance == null) instance = new KhachHangControl(); return instance; }
         }
         private KhachHangControl()
         {

@@ -12,8 +12,8 @@ namespace QuanLyBanBanh.Controls
         private static HoaDonBanControl instance;
         public HoaDonBanControl Instance
         {
-            private set { if (instance == null) instance = new HoaDonBanControl(); instance = value; }
-            get { return instance; }
+            private set { instance = value; }
+            get { if (instance == null) instance = new HoaDonBanControl(); return instance; }
         }
         private HoaDonBanControl()
         {
@@ -44,11 +44,11 @@ namespace QuanLyBanBanh.Controls
             DataTable dt = DataProvider.Instance.ExecuteQuery(query, new object[] { id });
             return dt;
         }
-        //public static int suaThongTin(int id, string ten, int loai, float dongia, string donvido, DateTime hsd, DateTime nsx, int soluong) // sửa thông tin của hóa đơn
-        //{
-        //    string query = "exec suakh @id , @ten , @loai , @dongia , @donvi , @hsd , @nsx , @soluong";
-        //    return DataProvider.Instance.ExecuteNonQuery(query, new object[] { id, ten, loai, dongia, donvido, hsd, nsx, soluong });
-        //}
+        public static int suaThongTin(int mahdb, int makh, int manv, int makm, int trangthai, double thanhtoan) // sửa thông tin của hóa đơn
+        {
+            string query = "exec suahdb @id , @makh , @manv , @makm , @trangthai , @thanhtoan";
+            return DataProvider.Instance.ExecuteNonQuery(query, new object[] { mahdb, makh, manv, makm, trangthai, thanhtoan });
+        }
         public static int xoaThongTin(int id) // xóa thông tin hoa don ban
         {
             string query = "exec xoahdb @ma";

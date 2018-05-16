@@ -98,6 +98,13 @@ namespace QuanLyBanBanh.GUI
                 frm.Visible = true;
                 tpNhaCungCap.Controls.Add(frm);
             }
+            else if (tab == 6)
+            {
+                ucThongKe frm = new ucThongKe();
+                frm.Size = new Size(tc1.Controls[tab].Width, tc1.Controls[tab].Height);
+                frm.Visible = true;
+                tpThongKe.Controls.Add(frm);
+            }
         }
 
         private void mnuAdmin_QuanLyNV_Click(object sender, EventArgs e)

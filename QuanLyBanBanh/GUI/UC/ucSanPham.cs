@@ -27,7 +27,7 @@ namespace QuanLyBanBanh.GUI.UC
             tvLoaiSP.Nodes.Clear();
             // lấy thống tin tất cả loại sp và mặt hàng
             tvLoaiSP.Nodes.Add("TatCa", "Tất cả");
-            DataTable dtMatHang = LoaiSPControl.layDSMH();
+            DataTable dtMatHang = MatHangControl.layDSMH();
             List<MatHang> listMH = new List<MatHang>();
             for (int i = 0; i < dtMatHang.Rows.Count; ++i)
             {
@@ -39,7 +39,6 @@ namespace QuanLyBanBanh.GUI.UC
             for(int i = 0; i < listMH.Count; ++i)
             {
                 tvLoaiSP.Nodes["TatCa"].Nodes.Add(listMH[i].IdMH.ToString(), listMH[i].TenMH);
-
                 for(int j = 0; j < listMH[i].ListLoai.Count; ++j)
                 {
                     tvLoaiSP.Nodes["TatCa"].Nodes[listMH[i].IdMH.ToString()].Nodes.Add(listMH[i].ListLoai[j].IdLoai.ToString(), listMH[i].ListLoai[j].TenLoai);
@@ -173,6 +172,31 @@ namespace QuanLyBanBanh.GUI.UC
             {
                 dgvDanhSach.Rows.Add(false, dt.Rows[i][0], dt.Rows[i][1], dt.Rows[i][2], dt.Rows[i][3], dt.Rows[i][4], String.Format("{0:dd/MM/yyyy}", dt.Rows[0][5]),
                                      String.Format("{0:dd/MM/yyyy}", dt.Rows[0][6]), dt.Rows[i][7]);
+            }
+        }
+
+        private void btnThemLoai_Click(object sender, EventArgs e)
+        {
+            frmThemLoaiSP f = new frmThemLoaiSP();
+            f.ShowDialog();
+            loadLoaiSP();
+        }
+
+        private void btnXoaLoai_Click(object sender, EventArgs e)
+        {
+            if(tvLoaiSP.SelectedNode.Name.Equals("TatCa"))
+            {
+                return;
+            }
+            else if(tvLoaiSP.SelectedNode.Parent.Name.Equals("TatCa")) // mặt hàng
+            {
+                MatHangControl.xoaDuLieu(Convert.ToInt32(tvLoaiSP.SelectedNode.Name));
+                loadLoaiSP();
+            }
+            else
+            {
+                LoaiSPControl.xoaDuLieu(Convert.ToInt32(tvLoaiSP.SelectedNode.Name));
+                loadLoaiSP();
             }
         }
     }
