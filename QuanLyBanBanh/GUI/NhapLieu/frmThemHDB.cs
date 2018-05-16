@@ -361,7 +361,6 @@ namespace QuanLyBanBanh.GUI.NhapLieu
                 }
                 if (ketqua > 0)
                 {
-                    MessageBox.Show("them thanh cong");
                     this.Close();
                 }
             }
@@ -380,13 +379,12 @@ namespace QuanLyBanBanh.GUI.NhapLieu
                 }
                 if (ketqua > 0)
                 {
-                    MessageBox.Show("sua thanh cong");
                     this.Close();
                 }
             }
             ///////////////////////////
-            //frmInHoaDonBan f = new frmInHoaDonBan(HDB.Id);
-           // f.ShowDialog();
+            frmInHDB f = new frmInHDB();
+            f.ShowDialog();
         } 
     }
 }

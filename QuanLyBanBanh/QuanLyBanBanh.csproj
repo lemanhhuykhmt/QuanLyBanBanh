@@ -76,6 +76,11 @@
     <Compile Include="Controls\NhanVienControl.cs" />
     <Compile Include="Controls\SanPhamControl.cs" />
     <Compile Include="Controls\ThongKeControl.cs" />
+    <Compile Include="DataSet\dsHDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsHDB.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\dsThongKe.cs">
       <DependentUpon>dsThongKe.xsd</DependentUpon>
     </Compile>
@@ -113,6 +118,12 @@
     </Compile>
     <Compile Include="GUI\frmThongTinCaNhan.Designer.cs">
       <DependentUpon>frmThongTinCaNhan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\In\frmInHDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GUI\In\frmInHDB.Designer.cs">
+      <DependentUpon>frmInHDB.cs</DependentUpon>
     </Compile>
     <Compile Include="GUI\In\frmInThongKe.cs">
       <SubType>Form</SubType>
@@ -258,6 +269,9 @@
     <EmbeddedResource Include="GUI\frmThongTinCaNhan.resx">
       <DependentUpon>frmThongTinCaNhan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="GUI\In\frmInHDB.resx">
+      <DependentUpon>frmInHDB.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GUI\In\frmInThongKe.resx">
       <DependentUpon>frmInThongKe.cs</DependentUpon>
     </EmbeddedResource>
@@ -323,7 +337,19 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Report\rpInHDB.rdlc" />
     <EmbeddedResource Include="Report\rpInThongKe.rdlc" />
+    <None Include="DataSet\dsHDB.xsc">
+      <DependentUpon>dsHDB.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\dsHDB.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsHDB.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\dsHDB.xss">
+      <DependentUpon>dsHDB.xsd</DependentUpon>
+    </None>
     <None Include="DataSet\dsThongKe.xsc">
       <DependentUpon>dsThongKe.xsd</DependentUpon>
     </None>

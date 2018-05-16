@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsHDB" targetNamespace="http://tempuri.org/dsHDB.xsd" xmlns:mstns="http://tempuri.org/dsHDB.xsd" xmlns="http://tempuri.org/dsHDB.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="BanBanhConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="BanBanhConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.QuanLyBanBanh.Properties.Settings.GlobalReference.Default.BanBanhConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ThongTinHDBTableAdapter" GeneratorDataComponentClassName="ThongTinHDBTableAdapter" Name="ThongTinHDB" UserDataComponentName="ThongTinHDBTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BanBanhConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select b.MaHDB, b.TenNV, b.TenKH, b.TrangThai,b.NgayLap, km.TenKM, b.ThanhToan from (select a.MaHDB, a.TenNV, kh.TenKH, a.TrangThai, a.NgayLap, a.MaKM, a.ThanhToan from (select hdb.MaHDB, nv.TenNV, hdb.MaKH, hdb.TrangThai, hdb.NgayLap, hdb.MaKM, hdb.ThanhToan from HoaDonBan as hdb left join NhanVien as nv on hdb.MaNV = nv.MaNV) as a left join  KhachHang as kh on a.MaKH =  kh.MaKH) as b left join KhuyenMai as km on b.MaKM = km.MaKM where b.MaHDB = 1</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaHDB" DataSetColumn="MaHDB" />
+              <Mapping SourceColumn="TenNV" DataSetColumn="TenNV" />
+              <Mapping SourceColumn="TenKH" DataSetColumn="TenKH" />
+              <Mapping SourceColumn="TrangThai" DataSetColumn="TrangThai" />
+              <Mapping SourceColumn="NgayLap" DataSetColumn="NgayLap" />
+              <Mapping SourceColumn="TenKM" DataSetColumn="TenKM" />
+              <Mapping SourceColumn="ThanhToan" DataSetColumn="ThanhToan" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ChiTietHDBTableAdapter" GeneratorDataComponentClassName="ChiTietHDBTableAdapter" Name="ChiTietHDB" UserDataComponentName="ChiTietHDBTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="BanBanhConnectionString (Settings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select a.MaSP as MaSP, a.TenSP as TenSP, b.gt as DonGia, b.sl as SoLuong, b.gt * b.sl as GiaTien from SanPham as a,(select MaSP as ma, GiaTien as gt, SoLuong as sl from DanhSachBan where MaHDB = 1 ) as b where a.MaSP = b.ma</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="MaSP" DataSetColumn="MaSP" />
+              <Mapping SourceColumn="TenSP" DataSetColumn="TenSP" />
+              <Mapping SourceColumn="DonGia" DataSetColumn="DonGia" />
+              <Mapping SourceColumn="SoLuong" DataSetColumn="SoLuong" />
+              <Mapping SourceColumn="GiaTien" DataSetColumn="GiaTien" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsHDB" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsHDB" msprop:Generator_UserDSName="dsHDB">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ThongTinHDB" msprop:Generator_TableClassName="ThongTinHDBDataTable" msprop:Generator_TableVarName="tableThongTinHDB" msprop:Generator_TablePropName="ThongTinHDB" msprop:Generator_RowDeletingName="ThongTinHDBRowDeleting" msprop:Generator_RowChangingName="ThongTinHDBRowChanging" msprop:Generator_RowEvHandlerName="ThongTinHDBRowChangeEventHandler" msprop:Generator_RowDeletedName="ThongTinHDBRowDeleted" msprop:Generator_UserTableName="ThongTinHDB" msprop:Generator_RowChangedName="ThongTinHDBRowChanged" msprop:Generator_RowEvArgName="ThongTinHDBRowChangeEvent" msprop:Generator_RowClassName="ThongTinHDBRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaHDB" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMaHDB" msprop:Generator_ColumnPropNameInRow="MaHDB" msprop:Generator_ColumnPropNameInTable="MaHDBColumn" msprop:Generator_UserColumnName="MaHDB" type="xs:int" />
+              <xs:element name="TenNV" msprop:Generator_ColumnVarNameInTable="columnTenNV" msprop:Generator_ColumnPropNameInRow="TenNV" msprop:Generator_ColumnPropNameInTable="TenNVColumn" msprop:Generator_UserColumnName="TenNV" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TenKH" msprop:Generator_ColumnVarNameInTable="columnTenKH" msprop:Generator_ColumnPropNameInRow="TenKH" msprop:Generator_ColumnPropNameInTable="TenKHColumn" msprop:Generator_UserColumnName="TenKH" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TrangThai" msprop:Generator_ColumnVarNameInTable="columnTrangThai" msprop:Generator_ColumnPropNameInRow="TrangThai" msprop:Generator_ColumnPropNameInTable="TrangThaiColumn" msprop:Generator_UserColumnName="TrangThai" type="xs:int" minOccurs="0" />
+              <xs:element name="NgayLap" msprop:Generator_ColumnVarNameInTable="columnNgayLap" msprop:Generator_ColumnPropNameInRow="NgayLap" msprop:Generator_ColumnPropNameInTable="NgayLapColumn" msprop:Generator_UserColumnName="NgayLap" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TenKM" msprop:Generator_ColumnVarNameInTable="columnTenKM" msprop:Generator_ColumnPropNameInRow="TenKM" msprop:Generator_ColumnPropNameInTable="TenKMColumn" msprop:Generator_UserColumnName="TenKM" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="ThanhToan" msprop:Generator_ColumnVarNameInTable="columnThanhToan" msprop:Generator_ColumnPropNameInRow="ThanhToan" msprop:Generator_ColumnPropNameInTable="ThanhToanColumn" msprop:Generator_UserColumnName="ThanhToan" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ChiTietHDB" msprop:Generator_TableClassName="ChiTietHDBDataTable" msprop:Generator_TableVarName="tableChiTietHDB" msprop:Generator_TablePropName="ChiTietHDB" msprop:Generator_RowDeletingName="ChiTietHDBRowDeleting" msprop:Generator_RowChangingName="ChiTietHDBRowChanging" msprop:Generator_RowEvHandlerName="ChiTietHDBRowChangeEventHandler" msprop:Generator_RowDeletedName="ChiTietHDBRowDeleted" msprop:Generator_UserTableName="ChiTietHDB" msprop:Generator_RowChangedName="ChiTietHDBRowChanged" msprop:Generator_RowEvArgName="ChiTietHDBRowChangeEvent" msprop:Generator_RowClassName="ChiTietHDBRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MaSP" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnMaSP" msprop:Generator_ColumnPropNameInRow="MaSP" msprop:Generator_ColumnPropNameInTable="MaSPColumn" msprop:Generator_UserColumnName="MaSP" type="xs:int" />
+              <xs:element name="TenSP" msprop:Generator_ColumnVarNameInTable="columnTenSP" msprop:Generator_ColumnPropNameInRow="TenSP" msprop:Generator_ColumnPropNameInTable="TenSPColumn" msprop:Generator_UserColumnName="TenSP">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DonGia" msprop:Generator_ColumnVarNameInTable="columnDonGia" msprop:Generator_ColumnPropNameInRow="DonGia" msprop:Generator_ColumnPropNameInTable="DonGiaColumn" msprop:Generator_UserColumnName="DonGia" type="xs:double" />
+              <xs:element name="SoLuong" msprop:Generator_ColumnVarNameInTable="columnSoLuong" msprop:Generator_ColumnPropNameInRow="SoLuong" msprop:Generator_ColumnPropNameInTable="SoLuongColumn" msprop:Generator_UserColumnName="SoLuong" type="xs:int" />
+              <xs:element name="GiaTien" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnGiaTien" msprop:Generator_ColumnPropNameInRow="GiaTien" msprop:Generator_ColumnPropNameInTable="GiaTienColumn" msprop:Generator_UserColumnName="GiaTien" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ThongTinHDB" />
+      <xs:field xpath="mstns:MaHDB" />
+    </xs:unique>
+    <xs:unique name="ChiTietHDB_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:ChiTietHDB" />
+      <xs:field xpath="mstns:MaSP" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>
