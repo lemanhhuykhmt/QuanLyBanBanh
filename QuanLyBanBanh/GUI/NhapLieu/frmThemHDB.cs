@@ -383,7 +383,7 @@ namespace QuanLyBanBanh.GUI.NhapLieu
                 }
             }
             ///////////////////////////
-            frmInHDB f = new frmInHDB();
+            frmInHDB f = new frmInHDB(HDB.Id);
             f.ShowDialog();
         } 
     }

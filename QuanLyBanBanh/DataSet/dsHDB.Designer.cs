@@ -1476,16 +1476,18 @@ namespace QuanLyBanBanh.DataSet.dsHDBTableAdapters {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = @"select b.MaHDB, b.TenNV, b.TenKH, b.TrangThai,b.NgayLap, km.TenKM, b.ThanhToan from (select a.MaHDB, a.TenNV, kh.TenKH, a.TrangThai, a.NgayLap, a.MaKM, a.ThanhToan from (select hdb.MaHDB, nv.TenNV, hdb.MaKH, hdb.TrangThai, hdb.NgayLap, hdb.MaKM, hdb.ThanhToan from HoaDonBan as hdb left join NhanVien as nv on hdb.MaNV = nv.MaNV) as a left join  KhachHang as kh on a.MaKH =  kh.MaKH) as b left join KhuyenMai as km on b.MaKM = km.MaKM where b.MaHDB = 1";
+            this._commandCollection[0].CommandText = @"select b.MaHDB, b.TenNV, b.TenKH, b.TrangThai,b.NgayLap, km.TenKM, b.ThanhToan from (select a.MaHDB, a.TenNV, kh.TenKH, a.TrangThai, a.NgayLap, a.MaKM, a.ThanhToan from (select hdb.MaHDB, nv.TenNV, hdb.MaKH, hdb.TrangThai, hdb.NgayLap, hdb.MaKM, hdb.ThanhToan from HoaDonBan as hdb left join NhanVien as nv on hdb.MaNV = nv.MaNV) as a left join  KhachHang as kh on a.MaKH =  kh.MaKH) as b left join KhuyenMai as km on b.MaKM = km.MaKM where b.MaHDB = @MaHDB";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHDB", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "MaHDB", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsHDB.ThongTinHDBDataTable dataTable) {
+        public virtual int Fill(dsHDB.ThongTinHDBDataTable dataTable, int MaHDB) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MaHDB));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1497,8 +1499,9 @@ namespace QuanLyBanBanh.DataSet.dsHDBTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsHDB.ThongTinHDBDataTable GetData() {
+        public virtual dsHDB.ThongTinHDBDataTable GetData(int MaHDB) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MaHDB));
             dsHDB.ThongTinHDBDataTable dataTable = new dsHDB.ThongTinHDBDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -1649,16 +1652,18 @@ namespace QuanLyBanBanh.DataSet.dsHDBTableAdapters {
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "select a.MaSP as MaSP, a.TenSP as TenSP, b.gt as DonGia, b.sl as SoLuong, b.gt * " +
                 "b.sl as GiaTien from SanPham as a,(select MaSP as ma, GiaTien as gt, SoLuong as " +
-                "sl from DanhSachBan where MaHDB = 1 ) as b where a.MaSP = b.ma";
+                "sl from DanhSachBan where MaHDB = @MaHDB ) as b where a.MaSP = b.ma";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaHDB", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(dsHDB.ChiTietHDBDataTable dataTable) {
+        public virtual int Fill(dsHDB.ChiTietHDBDataTable dataTable, int MaHDB) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MaHDB));
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
             }
@@ -1670,8 +1675,9 @@ namespace QuanLyBanBanh.DataSet.dsHDBTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual dsHDB.ChiTietHDBDataTable GetData() {
+        public virtual dsHDB.ChiTietHDBDataTable GetData(int MaHDB) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(MaHDB));
             dsHDB.ChiTietHDBDataTable dataTable = new dsHDB.ChiTietHDBDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
