@@ -45,9 +45,9 @@
             this.tpHangHoa = new System.Windows.Forms.TabPage();
             this.tpBanHang = new System.Windows.Forms.TabPage();
             this.tpHome = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lb1 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
             this.tc1 = new System.Windows.Forms.TabControl();
             this.menuStrip1.SuspendLayout();
             this.tpHome.SuspendLayout();
@@ -74,6 +74,7 @@
             this.mnuAdmin.Name = "mnuAdmin";
             this.mnuAdmin.Size = new System.Drawing.Size(65, 24);
             this.mnuAdmin.Text = "Admin";
+            this.mnuAdmin.Visible = false;
             // 
             // mnuAdmin_QuanLyNV
             // 
@@ -212,6 +213,14 @@
             this.tpHome.Text = "Home";
             this.tpHome.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(3, 144);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1209, 503);
+            this.panel2.TabIndex = 1;
+            // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
@@ -232,14 +241,6 @@
             this.lb1.TabIndex = 0;
             this.lb1.Text = "Chào Mừng Đến Với Ứng Dụng Quản Lý Cửa Hàng Bán Bánh";
             this.lb1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 144);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1209, 503);
-            this.panel2.TabIndex = 1;
             // 
             // tc1
             // 

@@ -56,5 +56,19 @@ namespace QuanLyBanBanh.Controls
             string query = "exec suaacc @ten , @matkhau";
             return DataProvider.Instance.ExecuteNonQuery(query, new object[] { ten, matkhau});
         }
+        public static int layQuyen(string tendangnhap)
+        {
+            string PHAN_BIET_HOA_THUONG = "COLLATE SQL_Latin1_General_CP1_CS_AS";
+            string query = "select * from Account where TenDangNhap = '" + tendangnhap + "' " + PHAN_BIET_HOA_THUONG;
+            DataTable data = DataProvider.Instance.ExecuteQuery(query); // trả về danh sách acc phù hợp tenD... và matK...
+            if (data.Rows.Count > 0) // nếu có acc trùng
+            {
+                int quyen = 0; // quyền của acc
+                query = "exec TimQuyen " + tendangnhap;
+                quyen = (int)DataProvider.Instance.ExecuteScalar(query);
+                return quyen;
+            }
+            return 0;
+        }
     }
 }

@@ -72,6 +72,10 @@ namespace QuanLyBanBanh.GUI.UC
                 loadDuLieu();
                 return;
             }
+            timKiem(value);
+        }
+        private void timKiem(string value)
+        {
             dgvDanhSach.Rows.Clear();
             DataTable dt = HoaDonBanControl.timKiem(value);// tìm kiếm
             for (int i = 0; i < dt.Rows.Count; ++i)
@@ -96,9 +100,7 @@ namespace QuanLyBanBanh.GUI.UC
                 }
                 dgvDanhSach.Rows.Add(new object[] { false, dt.Rows[i][0], dt.Rows[i][1], dt.Rows[i][2], dt.Rows[i][3], tenTrangThai });
             }
-            
         }
-
         private void dgvDanhSach_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dgvDanhSach.Rows.Count == e.RowIndex + 1) return;
@@ -136,6 +138,26 @@ namespace QuanLyBanBanh.GUI.UC
             else
             {
                 MessageBox.Show("xóa thất bại");
+            }
+        }
+
+        private void txtTimKiem_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            if (e.KeyValue == 13)
+            {
+                // get text
+                string value = txtTimKiem.Text;
+                if (value.Length == 0)
+                {
+                    loadDuLieu();
+                    return;
+                }
+                timKiem(value);
+            }
+            else if (e.KeyValue == 27)
+            {
+                txtTimKiem.Text = "";
+                loadDuLieu();
             }
         }
     }

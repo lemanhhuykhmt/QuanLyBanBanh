@@ -65,11 +65,11 @@ namespace QuanLyBanBanh.GUI.NhapLieu
                 int vitri = HDB.ChiTiet.isContain(Convert.ToInt32(dt.Rows[i][0].ToString()));
                 if (vitri != -1) // nếu sản phẩm có trong HDB
                 {
-                    soluong = Convert.ToInt32(dt.Rows[i][7].ToString()) - HDB.ChiTiet.ListSanPham[vitri].SoLuong;
+                    soluong = Convert.ToInt32(dt.Rows[i]["SoLuong"].ToString()) - HDB.ChiTiet.ListSanPham[vitri].SoLuong;
                 }
                 else
                 {
-                    soluong = Convert.ToInt32(dt.Rows[i][7].ToString());
+                    soluong = Convert.ToInt32(dt.Rows[i]["SoLuong"].ToString());
                 }
                 dgvDanhSachSP.Rows.Add(new object[] { dt.Rows[i][0], dt.Rows[i][1], dt.Rows[i][3], dt.Rows[i][4], soluong });
                // dgvChiTiet.Rows[dgvChiTiet.Rows.Count - 2].Tag = HDB.ChiTiet.ListSanPham[i].IdSP;
@@ -318,6 +318,7 @@ namespace QuanLyBanBanh.GUI.NhapLieu
 
         private void nhanIDKH(int idkh)
         {
+            
             HDB.IdKH = idkh;
             loadKhachHang();
         }

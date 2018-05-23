@@ -95,7 +95,7 @@ namespace QuanLyBanBanh.Model
             int loaiKM = khuyenMai.LoaiKM;
             double giaTri = khuyenMai.GiaTri;
 
-            if(loaiKM == 0)
+            if(loaiKM == 0) // mã = 0
             {
                 thanhToan = chiTiet.tinhTongTien();
             }

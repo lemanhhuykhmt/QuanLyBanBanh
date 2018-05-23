@@ -123,6 +123,7 @@ namespace QuanLyBanBanh.GUI.UC
             else if (e.KeyValue == 27)
             {
                 txtTimKiem.Text = "";
+                loadDuLieu();
             }
         }
 

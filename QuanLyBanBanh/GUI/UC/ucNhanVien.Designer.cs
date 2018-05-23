@@ -105,7 +105,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 64);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(967, 538);
+            this.panel2.Size = new System.Drawing.Size(967, 584);
             this.panel2.TabIndex = 11;
             // 
             // dgvDanhSach
@@ -127,7 +127,7 @@
             this.dgvDanhSach.Name = "dgvDanhSach";
             this.dgvDanhSach.RowHeadersVisible = false;
             this.dgvDanhSach.RowTemplate.Height = 24;
-            this.dgvDanhSach.Size = new System.Drawing.Size(967, 538);
+            this.dgvDanhSach.Size = new System.Drawing.Size(967, 584);
             this.dgvDanhSach.TabIndex = 0;
             this.dgvDanhSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhSach_CellContentClick);
             // 
@@ -196,7 +196,7 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "ucNhanVien";
-            this.Size = new System.Drawing.Size(967, 602);
+            this.Size = new System.Drawing.Size(967, 648);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);

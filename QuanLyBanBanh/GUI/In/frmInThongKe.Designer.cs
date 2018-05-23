@@ -29,27 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.rpvThongKe = new Microsoft.Reporting.WinForms.ReportViewer();
+            Microsoft.Reporting.WinForms.ReportDataSource reportDataSource2 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.thongKeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dsThongKe = new QuanLyBanBanh.DataSet.dsThongKe();
+            this.rpvThongKe = new Microsoft.Reporting.WinForms.ReportViewer();
             this.thongKeTableAdapter = new QuanLyBanBanh.DataSet.dsThongKeTableAdapters.ThongKeTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.thongKeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dsThongKe)).BeginInit();
             this.SuspendLayout();
-            // 
-            // rpvThongKe
-            // 
-            this.rpvThongKe.Dock = System.Windows.Forms.DockStyle.Fill;
-            reportDataSource1.Name = "InThongKe";
-            reportDataSource1.Value = this.thongKeBindingSource;
-            this.rpvThongKe.LocalReport.DataSources.Add(reportDataSource1);
-            this.rpvThongKe.LocalReport.ReportEmbeddedResource = "QuanLyBanBanh.Report.rpInThongKe.rdlc";
-            this.rpvThongKe.Location = new System.Drawing.Point(0, 0);
-            this.rpvThongKe.Name = "rpvThongKe";
-            this.rpvThongKe.ServerReport.BearerToken = null;
-            this.rpvThongKe.Size = new System.Drawing.Size(872, 536);
-            this.rpvThongKe.TabIndex = 0;
             // 
             // thongKeBindingSource
             // 
@@ -60,6 +47,19 @@
             // 
             this.dsThongKe.DataSetName = "dsThongKe";
             this.dsThongKe.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // rpvThongKe
+            // 
+            this.rpvThongKe.Dock = System.Windows.Forms.DockStyle.Fill;
+            reportDataSource2.Name = "InThongKe";
+            reportDataSource2.Value = this.thongKeBindingSource;
+            this.rpvThongKe.LocalReport.DataSources.Add(reportDataSource2);
+            this.rpvThongKe.LocalReport.ReportEmbeddedResource = "QuanLyBanBanh.Report.rpInThongKe.rdlc";
+            this.rpvThongKe.Location = new System.Drawing.Point(0, 0);
+            this.rpvThongKe.Name = "rpvThongKe";
+            this.rpvThongKe.ServerReport.BearerToken = null;
+            this.rpvThongKe.Size = new System.Drawing.Size(872, 536);
+            this.rpvThongKe.TabIndex = 0;
             // 
             // thongKeTableAdapter
             // 
